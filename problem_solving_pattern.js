@@ -33,35 +33,64 @@
 
 // frequency counter
 
-const same = (a1, a2) => {
-  if (a1.length != a2.length) {
-    return false
-  }
-  let fc1={}
-  let fc2={}
-  for(val of a1){
+// const same = (a1, a2) => {
+//   if (a1.length != a2.length) {
+//     return false
+//   }
+//   let fc1={}
+//   let fc2={}
+//   for(val of a1){
+//     fc1[val]= ++fc1[val] || 1
+//   }
+//   for (val of a2){
+//     fc2[val]= ++fc2[val] || 1 
+//   }
+//   console.log(fc1,fc2)
+//   for(let key in fc1){ 
+//     if(!(key ** 2 in fc2)){
+//       // This if condition will check whether the  keys are matching in fc1 and fc2
+//       return false
+//     }
+//     if(fc2[key ** 2] !== fc1[key]){
+//       return false
+//       // this if condition will check whether the values are matching for the respective key in fc1 and fc2
+//     }
+//   }
+//   return true
+// }
+// document.write(same([1,4,2,3,2,4],[1,16,16,4,4,9]))
+
+
+// Example two  Anagrams
+/*Given two strings, write a function to determine if the second string is an anagram of the first. An anagram is a word, phrase, or name formed by rearranging the letters of another, such as cinema, formed from iceman */
+
+const anagram = (s1,s2) => {
+if(s1.length != s2.length){
+  return false
+}
+  let fc1= {}
+  let fc2= {}
+for (val of s1){
     fc1[val]= ++fc1[val] || 1
   }
-  for (val of a2){
-    fc2[val]= ++fc2[val] || 1 
+  for (val of s2){
+    fc2[val]= ++fc2[val] || 1
   }
-  console.log(fc1,fc2)
-  for(let key in fc1){ 
-    if(!(key ** 2 in fc2)){
-      // This if condition will check whether the  keys are matching in fc1 and fc2
-      return false
+
+  for(let key in fc1 ){
+    if (!(key in fc2))
+    {
+      return false 
     }
-    if(fc2[key ** 2] !== fc1[key]){
+    if (fc1[key] !== fc2[key])
       return false
-      // this if condition will check whether the values are matching for the respective key in fc1 and fc2
-    }
   }
   return true
 }
-document.write(same([1,4,2,3,2,4],[1,16,16,4,4,9]))
+document.write(`The given string is ${anagram("aaz","zza")? "anagram" : "not anagram" }`)
+// console.log(anagram("sagar","sgyar"))
 
 
 
-  
 
 
