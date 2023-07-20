@@ -8,7 +8,7 @@
  Write a function called same, which accepts two arrays. The function should return true if every value in the array has it's corresponding value squared in the second array. The frequency of values must be the same
     eg:
     [2,4,4,6] [4,36,16,16]  --> returns true
-     
+    
  */
 
 // basic approch(Naive approach)
@@ -64,33 +64,108 @@
 // Example two  Anagrams
 /*Given two strings, write a function to determine if the second string is an anagram of the first. An anagram is a word, phrase, or name formed by rearranging the letters of another, such as cinema, formed from iceman */
 
-const anagram = (s1,s2) => {
-if(s1.length != s2.length){
-  return false
-}
-  let fc1= {}
-  let fc2= {}
-for (val of s1){
-    fc1[val]= ++fc1[val] || 1
-  }
-  for (val of s2){
-    fc2[val]= ++fc2[val] || 1
-  }
+// const anagram = (s1,s2) => {
+// if(s1.length != s2.length){
+//   return false
+// }
+//   let fc1= {}
+//   let fc2= {}
+// for (val of s1){
+//     fc1[val]= ++fc1[val] || 1
+//   }
+//   for (val of s2){
+//     fc2[val]= ++fc2[val] || 1
+//   }
 
-  for(let key in fc1 ){
-    if (!(key in fc2))
-    {
-      return false 
-    }
-    if (fc1[key] !== fc2[key])
-      return false
-  }
-  return true
-}
-document.write(`The given string is ${anagram("aaz","zza")? "anagram" : "not anagram" }`)
+//   for(let key in fc1 ){
+//     if (!(key in fc2))
+//     {
+//       return false 
+//     }
+//     if (fc1[key] !== fc2[key])
+//       return false
+//   }
+//   return true
+// }
+// document.write(`The given string is ${anagram("aaz","zza")? "anagram" : "not anagram" }`)
 // console.log(anagram("sagar","sgyar"))
+// 2nd way
+
+// const secondwayanagram = (s11,s12) =>{
+//   if(s11.length != s12.length){
+//   return false
+// }
+//   let fc={}
+//   for (val of s11)
+//     {
+//       fc[val]= ++fc[val] || 1
+//     }
+//   for (val of s12){
+//     if(!fc[val]){
+//       return false
+//       //  if the value is not present in the obj then it will return false 
+//     }else{
+//       fc[val] -=1
+//       // if the value is present in the obj then it will reduce that respective key's value by one
+//     }
+
+// }
+//    return true
+// }
+
+// document.write(`The given string is ${secondwayanagram("aaz","zza")? "anagram" : "not anagram" }`)
 
 
 
+/* 2.  Multiple pointers pattern
+There will be senario where a value needs to be searched in array or strings.... so we use pointers or values that correspond to an index or position and move towards the beginning, end or middle based on a certain condition
 
+Very efficient for solving problems with minimal space complexity as well
+
+for Multiple pointers pattern either the array needs to be sorted or it should fallow some pattern(same applicale for strings)
+*/
+
+/*
+Examples:
+Write a function called sumZero which accepts a sorted array of integers. The function should find the first pair where the sum is 0. Return an array that includes both values that sum to zero or undefined if a pair does not exist
+*/
+//  naive solution --> time complexity --> O(N^2)
+
+// const sumzero = (array) =>{
+//   let z=[]
+//   for(let i =0; i<=array.length; i++){
+//     for(let j = i+1; j<= array.length; j++){
+//       if(array[i]+array[j]===0){
+//         z.push(array[i],array[j])
+//       }
+//     }
+//   }
+//   return z
+// }
+// // console.log(sumzero([-3,-2,-1,0,1,2]))
+// document.write(sumzero([-3,-2,-1,0,1,2,3]))
+
+// Above code has time complexity of O(N^2) to overcome this we will be using multiple pointers
+//  multiple pointer  -> O(N)
+const sumzeropointers = (a1) => {
+  // let z = []
+  // let position = []
+  let left = 0
+  let right = a1.length - 1
+  while (left < right) {
+    let sum = a1[left] + a1[right]
+
+    if (sum === 0) {
+      // z.push(a1[left], a1[right])
+      // position.push(left, right)
+      return [a1[left], a1[right], [left, right]]
+    } else if (sum < 0) {
+      left++
+    } else {
+      right--
+    }
+  }
+}
+
+console.log(sumzeropointers([-3, -2, -1, 0, 1, 2]))
 
