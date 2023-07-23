@@ -242,3 +242,26 @@ The function should calculate the maximum sum of n consecutive elements in the a
 // }
 // document.write("using sliding window algoritm <br/>")
 // document.write(`max subarray sum of an array using sliding window algorithm = ${maxSubarraySumSW([1,2,3,4,5,6],3)}  `)
+/* 3. divide and conquer method:
+this is a really importent algorithm it is used in various plases
+This pattern involves dividing a data set into smaller chunks and then repeating a process with a subset of data
+
+*/
+// example: brinary search
+
+const binarysearch = (arr,value) =>{
+  let first = 0
+  let last= arr.length -1
+  while(first <= last){
+   mid= Math.floor((last+first)/2);
+  if(arr[mid] > value){
+    last = mid -1
+  }else if(arr[mid] < value){
+    first = mid +1
+  }else{
+    return mid
+  }
+  return -1
+}
+
+console.log(binarysearch([1,2,3,4,5],3))
