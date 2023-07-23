@@ -147,25 +147,98 @@ Write a function called sumZero which accepts a sorted array of integers. The fu
 
 // Above code has time complexity of O(N^2) to overcome this we will be using multiple pointers
 //  multiple pointer  -> O(N)
-const sumzeropointers = (a1) => {
-  // let z = []
-  // let position = []
-  let left = 0
-  let right = a1.length - 1
-  while (left < right) {
-    let sum = a1[left] + a1[right]
+// const sumzeropointers = (a1) => {
+//   // let z = []
+//   // let position = []
+//   let left = 0
+//   let right = a1.length - 1
+//   while (left < right) {
+//     let sum = a1[left] + a1[right]
 
-    if (sum === 0) {
-      // z.push(a1[left], a1[right])
-      // position.push(left, right)
-      return [a1[left], a1[right], [left, right]]
-    } else if (sum < 0) {
-      left++
-    } else {
-      right--
-    }
-  }
-}
+//     if (sum === 0) {
+//       // z.push(a1[left], a1[right])
+//       // position.push(left, right)
+//       return [a1[left], a1[right], [left, right]]
+//     } else if (sum < 0) {
+//       left++
+//     } else {
+//       right--
+//     }
+//   }
+// }
 
-console.log(sumzeropointers([-3, -2, -1, 0, 1, 2]))
+// console.log(sumzeropointers([-3, -2, -1, 0, 1, 2]))
 
+// problem 2:
+// implement a function called countUniqueValues, which accepts a sorted array, and counts the unique values in the array. There can be negative numbers in the array, but it will always be sorted
+
+// const countUniqueValues = (arr) => {
+//   if (arr.length === 0){
+//     return
+//   }
+//   let left = 0
+//   let right = 1
+//   while (right <= arr.length - 1) {
+//     if (arr[left] == arr[right]) {
+//       right++
+//     } else {
+//       unique++
+//       left++
+//       arr[left] = arr[right]
+//     }
+//     console.log(arr)
+//   }
+// // we can also perform this using for loop 
+//   return left+1
+// }
+// document.write(`No of unique values ${countUniqueValues([0,0, 1, 1, 1, 1, 2, 2, 3,3,5,13])}`)
+
+
+
+/*3. Sliding window 
+this algorithm is useful when a subset needs to be searched with in the array. In this we create a window which contains either array or a number and this windo can increase or decrease based on the condition.
+This window slides over a array or srting to find desired result.
+*/ 
+/* example:
+Write a function called maxSubarraySum which accepts an array of integers and a number called n. 
+The function should calculate the maximum sum of n consecutive elements in the array.
+*/
+// naive solution:
+// const maxSubarraySum = (arr,n) =>{
+//   let max= -1;
+//   for(let i= 0 ;i<arr.length - n +1;i++){
+//     sum=0;
+//     for(let j=0;j<n;j++)
+//       // here j can't be equal to i as, i increases the j<n condition will not satisfy and break the loop 
+//       {
+//         sum+=arr[i+j]
+//       }
+//     // console.log(max,sum)
+//     if (sum >max){
+//       max=sum
+//     }
+  
+//   }
+//   return max
+// }
+// document.write(`max subarray sum of an array = ${maxSubarraySum([1,2,3,4,5,6],3)} <br/> `)
+
+// //  above solution has time complexity O(N^2) as it has nested loop so to overcome this nested loop we use sliding window.
+// // solution:
+// const maxSubarraySumSW = (arr,n) =>{
+//   if (n>arr.length) return null
+//   let maxsum=0
+//   let tempsum=0
+//   for (let i=0; i<n;i++)
+//     {
+//       maxsum+=arr[i]
+//     }
+//   tempsum=maxsum
+//   for(let j=n; j<arr.length;j++){
+//     tempsum = tempsum -arr[j-n] +arr[j]
+//     maxsum= Math.max(tempsum,maxsum)
+//   }
+//   return maxsum
+// }
+// document.write("using sliding window algoritm <br/>")
+// document.write(`max subarray sum of an array using sliding window algorithm = ${maxSubarraySumSW([1,2,3,4,5,6],3)}  `)
