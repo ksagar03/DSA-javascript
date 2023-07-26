@@ -198,7 +198,7 @@ Write a function called sumZero which accepts a sorted array of integers. The fu
 /*3. Sliding window 
 this algorithm is useful when a subset needs to be searched with in the array. In this we create a window which contains either array or a number and this windo can increase or decrease based on the condition.
 This window slides over a array or srting to find desired result.
-*/ 
+*/
 /* example:
 Write a function called maxSubarraySum which accepts an array of integers and a number called n. 
 The function should calculate the maximum sum of n consecutive elements in the array.
@@ -217,7 +217,7 @@ The function should calculate the maximum sum of n consecutive elements in the a
 //     if (sum >max){
 //       max=sum
 //     }
-  
+
 //   }
 //   return max
 // }
@@ -249,19 +249,20 @@ This pattern involves dividing a data set into smaller chunks and then repeating
 */
 // example: brinary search
 
-const binarysearch = (arr,value) =>{
+const binarysearch = (arr, value) => {
   let first = 0
-  let last= arr.length -1
-  while(first <= last){
-   mid= Math.floor((last+first)/2);
-  if(arr[mid] > value){
-    last = mid -1
-  }else if(arr[mid] < value){
-    first = mid +1
-  }else{
-    return mid
+  let last = arr.length - 1
+  while (first <= last) {
+    mid = Math.floor((last + first) / 2);
+    if (arr[mid] > value) {
+      last = mid - 1
+    } else if (arr[mid] < value) {
+      first = mid + 1
+    } else {
+      return mid
+    }
+    return -1
   }
-  return -1
 }
 
-console.log(binarysearch([1,2,3,4,5],3))
+console.log(binarysearch([1, 2, 3, 4, 5], 3))
