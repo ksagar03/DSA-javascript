@@ -44,40 +44,40 @@ and one more point to be remembered is to provide different input when function 
 
 // problem 4: to find odd numbers in an array using recursion
 
-const oddnumbers = (arr) =>{
+const oddnumbers = (arr) => {
   let result = [] // if the value is odd then it will be stored inside this empty array
-  function findoddnumbers(input){
-    if(input.length === 0){
+  function findoddnumbers(input) {
+    if (input.length === 0) {
       return;
     }
-    if(input[0] %2 !== 0){
+    if (input[0] % 2 !== 0) {
       result.push(input[0])
     }
     findoddnumbers(input.slice(1))
   }
   findoddnumbers(arr)
-    return result
+  return result
 }
 
-document.write(`odd numbers ${oddnumbers([1,2,3,4,5,6])} <br/>`)
+document.write(`odd numbers ${oddnumbers([1, 2, 3, 4, 5, 6])} <br/>`)
 
 //  this above method is helpful when the value needs to be stored.
 // alternative method for the above problem
 // here nested function will not be used
 
-const alternatemethod = (arr) => {
-  let result =[]
+// const alternatemethod = (arr) => {
+//   let result =[]
 
-  if(arr.length ===0){
-    return 
-  } // base condition
+//   if(arr.length ===0){
+//     return 
+//   } // base condition
 
-  if(arr[0]%2 !== 0){
-    result.push(arr[0])
-  }
+//   if(arr[0]%2 !== 0){
+//     result.push(arr[0])
+//   }
 
-  result =result.concat(alternatemethod(arr.slice(1)))
-  return result
-}
+//   result =result.concat(alternatemethod(arr.slice(1)))
+//   return result
+// }
 
-document.write(`alternate method where nested function is not used: ${alternatemethod([1,2,3,4,5,6])}`)
+// document.write(`alternate method where nested function is not used: ${alternatemethod([1,2,3,4,5,6])}`)
