@@ -92,3 +92,11 @@ const stringsearch = (str, str1) => {
 }
 
 document.write(`number of string matches: ${stringsearch("hello llo", "ll")}`)
+// above methods time complexity in O(m*n) where m and n are the length on two strings
+// to reduce the time complexity, KMP algorithm is used this algorithm will bring down the time complexity
+// O(N + M)
+// In naive method it is not analyzing the pattern which needs to be searched in the given string (simply it checking repitaively via for loop)
+// In KMP algorithm it will analyze the pattern which needs to be searched afterthat it will create an array called LPS(least preffix and suffix)
+// eg: "abbaaa" this is the pattern which needs to be searched then 
+// abbaaa = [0,0,1,1,2,3]
+//  here first 0 tells us about "a" has came one time so at the start it will set to 0 then next "b" this also appears one time so it is set to 0, next "b" is repeating so it is set to 1 and so on..... 
