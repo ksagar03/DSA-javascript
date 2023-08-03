@@ -40,4 +40,44 @@ const valuecompare = (n1,n2) =>{
    // return n2-n1
 }
 
-document.write(`a.sort(valuecomapre) gives us correct input [${a.sort(valuecompare)}] `)
+document.write(`a.sort(valuecomapre) gives us correct input [${a.sort(valuecompare)}] <br/>`)
+
+
+// bubble sort algorithm
+
+const bubbleSort = (arr) => {
+  for (let j=0;j<arr.length;j++){
+  for(let i =0 ; i<arr.length ; i++)
+    {
+      if (arr[i] > arr[i+1] ){
+        temp =arr[i]
+        arr[i] =arr[i+1]
+        arr[i+1] = temp
+      } 
+    }
+  }
+  return arr
+}
+// In bubble sort largest element is moved to the last(vise-versa)
+// there for we can ignore the last or first element in each iteration to menimize the count
+
+const bubbleSortopt =(arr) =>{
+  // if we have almost sorted array then we can add one more condition to minimize the iteration
+  let noswaping =1;
+  for(let i =arr.length; i>0 ; i--){
+    for(let j=0; j<i-1;j++){
+      if (arr[j] > arr[j+1]){
+        
+         [arr[j],arr[j+1]] = [arr[j+1],arr[j]]
+        noswaping =0
+      }
+    }
+    if (noswaping) break
+  }
+  return arr
+}
+
+arr = [20,3,26,1,4]
+document.write(`sorted array of [${arr}] is ${bubbleSort(arr)} <br/>`)
+arr2 = [3,1,2,4,5,6]
+document.write(`sorted array using optimized [${arr2}] is ${bubbleSortopt(arr2)} <br/>`)
