@@ -182,3 +182,6 @@ const Radixsort = (num) => {
 }
 
 console.log(Radixsort([1556, 4, 3556, 593, 408, 4386, 902, 7, 8157, 86, 9637, 29]))
+
+document.write(`Time complexity of radix sort: <br/>
+here "k" represents the maxdigitcount of a number in the given list of the number <br/> <img class="image" src="Radix_sort_time_complexity.PNG"> ` )
