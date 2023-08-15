@@ -43,7 +43,7 @@ const merge_sort = (arr) => {
 
 }
 array = [10, 23, 13, 3, 4, 87]
-document.write(`MERGE SORT <br/> merge sort working <br/> <img class="image" src="merge_sort_eg.jpg"> <br/>Given array =[${array}] <br/> merge sort solution [${merge_sort(array)}] <br/><br/>`)
+document.write(`MERGE SORT <br/> merge sort working <br/> <img class="image" src="images/merge_sort_eg.jpg"> <br/>Given array =[${array}] <br/> merge sort solution [${merge_sort(array)}] <br/><br/>`)
 
 merge_sort(array)
 //  this "merge_sort_eg will help us to merge the values of two array"
@@ -113,7 +113,7 @@ const quicksort = (arr, start = 0, end = arr.length - 1) => {
   return arr
 }
 console.log(quicksort([14, 2, 44, 21, 23, 11, 6]))
-document.write(`Quick sort time complexity <br/> <img class="image" src="Quick_sort_time_complexity.PNG"> <br/> The worst case is when the array is already sorted and quick sort algorithm is applied on it <br/>`)
+document.write(`Quick sort time complexity <br/> <img class="image" src="images/Quick_sort_time_complexity.PNG"> <br/> The worst case is when the array is already sorted and quick sort algorithm is applied on it <br/>`)
 
 /* Radix sort::
 this are the special type of sorting algorithm which does not perform comparison to provide us the result(like other algorithm which I learnt above)
@@ -124,10 +124,10 @@ From the given array it starts arranging the value in zero, tens, hundreds, thou
 */
 
 
-document.write(`RADIX sort <br/> eg :[1556, 4, 3556, 593, 408, 4386, 902, 7, 8157, 86, 9637, 29] <br/> <img class="image" src="radix_sort_eg_starting_phase.PNG" />
+document.write(`RADIX sort <br/> eg :[1556, 4, 3556, 593, 408, 4386, 902, 7, 8157, 86, 9637, 29] <br/> <img class="image" src="images/radix_sort_eg_starting_phase.PNG" />
 <br/> [902, 593, 4, 1556, 3556, 4386, 86, 7, 8157, 9637, 408, 29]
 <br/> after sorting everthing it will look like this
-<img class="image" src="radix_sort_eg.PNG" />
+<img class="image" src="images/radix_sort_eg.PNG" />
 <br/> for more information check this
 <a href="https://cs.slides.com/colt_steele/intermediate-sorting-algorithms#/30/0/2"> LINK</a>
 <br/><br/>
@@ -184,4 +184,4 @@ const Radixsort = (num) => {
 console.log(Radixsort([1556, 4, 3556, 593, 408, 4386, 902, 7, 8157, 86, 9637, 29]))
 
 document.write(`Time complexity of radix sort: <br/>
-here "k" represents the maxdigitcount of a number in the given list of the number <br/> <img class="image" src="Radix_sort_time_complexity.PNG"> ` )
+here "k" represents the maxdigitcount of a number in the given list of the number <br/> <img class="image" src="images/Radix_sort_time_complexity.PNG"> ` )
