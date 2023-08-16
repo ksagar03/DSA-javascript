@@ -16,26 +16,54 @@ class Node {
     // here if next value is not assigned or created then it assign value null
   }
 }
-class SinglyLinkedList{
-  constructor(){
-    this.head =null
+class SinglyLinkedList {
+  constructor() {
+    this.head = null
     this.tail = null
-    this.length =0
+    this.length = 0
     // at the start head and tail will be assigned with value null after inserting the value head and tail will get updated
   }
-  push(val){
+  push(val) {
     var newNode = new Node(val)
-    if (this.head == null && this.tail==null){
+    if (this.head == null && this.tail == null) {
       this.head = newNode
       this.tail = this.head
-    }else{
+    } else {
       this.tail.next = newNode
-      this.tail= newNode
+      this.tail = newNode
     }
     this.length++
     // if we are not returning any value then it will show as undefiend
     //  so to return whole list just need to return this  --> it will return the current list
     return this
+  }
+  traverse() {
+    let current = this.head
+    while (current) {
+      console.log(current)
+      current = current.next
+    }
+  }
+  pop(){
+    if(!this.head){
+      return undefined
+    }
+    var current = this.head
+    var prev = current
+    while(current.next){
+      prev= current
+      current = current.next // this line will help us to move one element ahead
+      
+    }
+   this.tail= prev
+    this.tail.next= null
+    this.length--
+    if(this.length === 0){ // this is an edge case where if the length is equal to zero then head and tail will be assigned null
+      this.head=null
+      this.tail=null
+    }
+    return current
+    // perv.next = null
   }
 }
 
@@ -61,9 +89,18 @@ value: "hi"
 __proto__: Object 
 */
 let list = new SinglyLinkedList()
-// list.push("hello")
-// list.push("sagar")
-// list.push("I")
+list.push(1)
+list.push(2)
+list.push(3)
+list.push(4)
+list.push(5)
+list.push(6)
+list.push(7)
+list.push(8)
+list.push(9)
+list.push(10)
+
+
 
 console.log(list)
 // At the start it will be empty
@@ -88,8 +125,4 @@ value: "sagar"
 __proto__: Object
 __proto__: Object
  */
-
-
-
-
 
