@@ -65,6 +65,43 @@ class SinglyLinkedList {
     return current
     // perv.next = null
   }
+  shift(){
+    //  to remvoe start of the element
+    if(!this.head){
+      return undefined
+    }
+    var oldhead = this.head
+    // var nexthead= this.head.next
+    this.head = oldhead.next
+    this.length--
+    console.log(oldhead.value)
+    // console.log(nexthead.value)
+    console.log(this.head.value)
+    if(this.length === 0){ // this is an edge case where if the length is equal to zero then head and tail will be assigned null
+      this.head=null
+      this.tail=null
+    }
+    return oldhead
+  }
+  unshift(val){
+    if(!this.head){
+      return undefined
+    }
+    var newheadnode = new Node(val)
+    if (this.head == null && this.tail == null) {
+      this.head = newNode
+      this.tail = this.head
+    }
+  else
+    { var currenthead = this.head
+    this.head = newheadnode
+    newheadnode.next = currenthead
+    this.length++
+      }
+    return this
+  }
+
+
 }
 
 
@@ -126,3 +163,4 @@ __proto__: Object
 __proto__: Object
  */
 
+ 
