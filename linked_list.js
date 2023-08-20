@@ -44,30 +44,30 @@ class SinglyLinkedList {
       current = current.next
     }
   }
-  pop(){
-    if(!this.head){
+  pop() {
+    if (!this.head) {
       return undefined
     }
     var current = this.head
     var prev = current
-    while(current.next){
-      prev= current
+    while (current.next) {
+      prev = current
       current = current.next // this line will help us to move one element ahead
-      
+
     }
-   this.tail= prev
-    this.tail.next= null
+    this.tail = prev
+    this.tail.next = null
     this.length--
-    if(this.length === 0){ // this is an edge case where if the length is equal to zero then head and tail will be assigned null
-      this.head=null
-      this.tail=null
+    if (this.length === 0) { // this is an edge case where if the length is equal to zero then head and tail will be assigned null
+      this.head = null
+      this.tail = null
     }
     return current
     // perv.next = null
   }
-  shift(){
+  shift() {
     //  to remvoe start of the element
-    if(!this.head){
+    if (!this.head) {
       return undefined
     }
     var oldhead = this.head
@@ -77,14 +77,14 @@ class SinglyLinkedList {
     console.log(oldhead.value)
     // console.log(nexthead.value)
     console.log(this.head.value)
-    if(this.length === 0){ // this is an edge case where if the length is equal to zero then head and tail will be assigned null
-      this.head=null
-      this.tail=null
+    if (this.length === 0) { // this is an edge case where if the length is equal to zero then head and tail will be assigned null
+      this.head = null
+      this.tail = null
     }
     return oldhead
   }
-  unshift(val){
-    if(!this.head){
+  unshift(val) {
+    if (!this.head) {
       return undefined
     }
     var newheadnode = new Node(val)
@@ -92,16 +92,35 @@ class SinglyLinkedList {
       this.head = newNode
       this.tail = this.head
     }
-  else
-    { var currenthead = this.head
-    this.head = newheadnode
-    newheadnode.next = currenthead
-    this.length++
-      }
+    else {
+      var currenthead = this.head
+      this.head = newheadnode
+      newheadnode.next = currenthead
+      this.length++
+    }
     return this
   }
-
-
+  get(position) {
+    if (position < 0 || position >= this.length) {
+      return "undefined position"
+    }
+    let currentnode = this.head
+    for (let i = 0; i < position; i++) {
+      currentnode = currentnode.next
+    }
+    // console.log(currentnode)
+    return currentnode
+  }
+  set(index, val) {
+    // to change the value of the node for the given index 
+    let nodeindex = this.get(index)
+    if (nodeindex) {
+      nodeindex.value = val
+    } else {
+      return "undeifned index"
+    }
+    return nodeindex
+  }
 }
 
 
@@ -163,4 +182,3 @@ __proto__: Object
 __proto__: Object
  */
 
- 
