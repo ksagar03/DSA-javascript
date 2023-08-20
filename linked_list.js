@@ -38,11 +38,13 @@ class SinglyLinkedList {
     return this
   }
   traverse() {
+    let arr = []
     let current = this.head
     while (current) {
-      console.log(current)
+      arr.push(current.value)
       current = current.next
     }
+    return arr
   }
   pop() {
     if (!this.head) {
@@ -139,33 +141,52 @@ class SinglyLinkedList {
       if (value) {
         return true
       } else return false
-    // or return !! this.push(val) this will return true or false
+      // or return !! this.push(val) this will return true or false
     }
     // all the edge cases covered
     let previndexnode = this.get(index - 1)
     // let currentindexnode = this.get(index)// insted of calling a get function again which will add more time complexity, just we can do previndexnode.next
     let currentindexnode = previndexnode.next
-      let newindexnode = new Node(val)
-      previndexnode.next = newindexnode
-      newindexnode.next = currentindexnode
-      this.length++
-      return this
+    let newindexnode = new Node(val)
+    previndexnode.next = newindexnode
+    newindexnode.next = currentindexnode
+    this.length++
+    return this
 
   }
-remove(index){
-  if(index < 0 || index > this.length){
-    return false
+  remove(index) {
+    if (index < 0 || index > this.length) {
+      return false
+    }
+    if (index === 0) {
+      return !!this.set()
+    }
+    if (index === this.length) return !!this.pop()
+    let prevIndexNode = this.get(index - 1)
+    let currentIndexNode = prevIndexNode.next
+    prevIndexNode.next = currentIndexNode.next
+    this.length--
+    return true
   }
-  if (index === 0){
-    return !! this.set()
+  reverse() {
+    if (!this.head) {
+      return "please insert the data"
+
+    }
+    var currentnode = this.head
+    this.head = this.tail
+    this.tail = currentnode
+    var next
+    var prevnode = null
+    for (let i = 0; i < this.lenth; i++) {
+      next = currentnode.next
+      currentnode.next = prevnode
+      prevnode = currentnode
+      currentnode = next
+
+    }
+    return this
   }
-  if (index === this.length) return !! this.pop()
-  let prevIndexNode = this.get(index -1)
-  let currentIndexNode = prevIndexNode.next
-  prevIndexNode.next = currentIndexNode.next
-  this.length--
-  return true 
-}
 }
 
 
