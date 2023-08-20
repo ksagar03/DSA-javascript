@@ -121,6 +121,51 @@ class SinglyLinkedList {
     }
     return nodeindex
   }
+  insert(index, val) {
+    // this will insert a value at given position
+    // to cover up edge cases 
+    if (index < 0 || index > this.length) {
+      return "please provide valid index"
+    }
+    if (index === 0) {
+      let value = this.unshift(val)
+      if (value) {
+        return true
+      } else return false
+      // or return !! this.unshit(val) this will return true or false
+    }
+    if (index === this.length) {
+      let value = this.push(val)
+      if (value) {
+        return true
+      } else return false
+    // or return !! this.push(val) this will return true or false
+    }
+    // all the edge cases covered
+    let previndexnode = this.get(index - 1)
+    // let currentindexnode = this.get(index)// insted of calling a get function again which will add more time complexity, just we can do previndexnode.next
+    let currentindexnode = previndexnode.next
+      let newindexnode = new Node(val)
+      previndexnode.next = newindexnode
+      newindexnode.next = currentindexnode
+      this.length++
+      return this
+
+  }
+remove(index){
+  if(index < 0 || index > this.length){
+    return false
+  }
+  if (index === 0){
+    return !! this.set()
+  }
+  if (index === this.length) return !! this.pop()
+  let prevIndexNode = this.get(index -1)
+  let currentIndexNode = prevIndexNode.next
+  prevIndexNode.next = currentIndexNode.next
+  this.length--
+  return true 
+}
 }
 
 
