@@ -1,5 +1,5 @@
 document.write(`<b>Linked List</b> <br/> Its a type of data structure which is used to store list of values <br/>
-Unlike the array which allocates memory and stores data sequentially(which makes deficult in inserting and removing the data), in linked list values are not stored in sequentially.
+Unlike the array which allocates memory and stores data sequentially(which makes deficult in inserting and removing the data), in linked list values(nodes) are linked via pointers.
 <br/>
 In liked list each element stored is refered to as <b>Nodes</b>. Each node contains value and pointer, this pointer points to the next element or Node.
 Note: The pointer will refers to the Null when it comes to the end of the list
@@ -7,7 +7,10 @@ Note: The pointer will refers to the Null when it comes to the end of the list
 The linked list contains <u>head</u> and <u>tail</u> which points towards start and end of the list
 <img class="image" src="/images/linked_list_eg.jpg">
 <br/>
-In linked list insertion and deletion of values was easy but accessing values randomlly is not so easy.`)
+In linked list insertion and deletion of values was easy but accessing values randomlly is not so easy. <br/>
+<b>Time Complexity </b>: <br/> For insertion it is O(1) (but in array it is O(n) ) <br/>for removal it is O(1)(this is for removing the data from the start) or O(n) (when the data is removed from the last then we need to iterate over the list) <br/> for searching and accessing the data it is O(n)  `)
+
+
 //  lets start with code
 class Node {
   constructor(val) {
@@ -171,15 +174,16 @@ class SinglyLinkedList {
   reverse() {
     if (!this.head) {
       return "please insert the data"
-
-    }
-    var currentnode = this.head
-    this.head = this.tail
+   }
+    //  Here in reverse the current node should point towards the previous node that
+    //  but if we do like that then "next node pointer will be gone" so to overcome that we should save the next node in some variable before pointing towards the previous pointer
+    let currentnode = this.head 
+    this.head = this.tail // here swaping of head and tail is happening
     this.tail = currentnode
-    var next
-    var prevnode = null
-    for (let i = 0; i < this.lenth; i++) {
-      next = currentnode.next
+    let next
+    let prevnode = null
+    for (let i = 0; i < this.length; i++) {
+      next = currentnode.next // current nodes next is saved in the variable  
       currentnode.next = prevnode
       prevnode = currentnode
       currentnode = next
