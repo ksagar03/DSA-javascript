@@ -12,24 +12,42 @@ In linked list insertion and deletion of values was easy but accessing values ra
 <b>Time Complexity </b>: <br/> For insertion it is O(1) (but in array it is O(n) ) <br/>for removal it is O(1)(this is for removing the data from the start) or O(n) (when the data is removed from the last then we need to iterate over the list) <br/> for searching and accessing the data it is O(n)  `)
 
 class Node {
-  constructor(val){
+  constructor(val) {
     this.prev = null
-    this.next= null
+    this.next = null
     this.value = val
   }
 }
-class doubly_linked_list{
-  constructor(){
+class doubly_linked_list {
+  constructor() {
     this.head = null
     this.tail = null
     this.length = 0
   }
-push(val){
-  let newNode = new Node(val)
-  if(!this.head){
-    this.head = newNode
-    this.tail = this.head
+  push(val) {
+    let newNode = new Node(val)
+    if (!this.head) {
+      this.head = newNode
+      this.tail = this.head
+    }else{  
+    this.tail.next = newNode
+    newNode.prev = this.tail
+    this.tail = newNode
+   
     }
-  this.tail= newNode
+     this.length++
+    return this
+  }
 }
-}
+
+let list = new doubly_linked_list()
+list.push(1)
+list.push(2)
+list.push(3)
+list.push(4)
+list.push(5)
+list.push(6)
+list.push(7)
+list.push(8)
+list.push(9)
+list.push(10)
