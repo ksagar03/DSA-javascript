@@ -38,16 +38,27 @@ class doubly_linked_list {
      this.length++
     return this
   }
+  pop(){
+    if (this.length === 0){
+      return undefined
+    }
+    let currenttail = this.tail
+    if(this.length === 1 ){
+      [this.head,this.tail] = [null,null]
+      
+    }else{
+      let prevNode = this.tail.prev
+    this.tail.prev=null
+    prevNode.next = null
+    this.tail = prevNode
+    } 
+    this.length--
+    return currenttail.value
+  }
 }
 
 let list = new doubly_linked_list()
 list.push(1)
 list.push(2)
-list.push(3)
-list.push(4)
-list.push(5)
-list.push(6)
-list.push(7)
-list.push(8)
-list.push(9)
-list.push(10)
+// list.push(3)
+// list.push(4)
