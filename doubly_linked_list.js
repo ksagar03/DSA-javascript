@@ -29,31 +29,62 @@ class doubly_linked_list {
     if (!this.head) {
       this.head = newNode
       this.tail = this.head
-    }else{  
-    this.tail.next = newNode
-    newNode.prev = this.tail
-    this.tail = newNode
-   
+    } else {
+      this.tail.next = newNode
+      newNode.prev = this.tail
+      this.tail = newNode
+
     }
-     this.length++
+    this.length++
     return this
   }
-  pop(){
-    if (this.length === 0){
+  pop() {
+    if (this.length === 0) {
       return undefined
     }
     let currenttail = this.tail
-    if(this.length === 1 ){
-      [this.head,this.tail] = [null,null]
-      
-    }else{
+    if (this.length === 1) {
+      [this.head, this.tail] = [null, null]
+
+    } else {
       let prevNode = this.tail.prev
-    this.tail.prev=null
-    prevNode.next = null
-    this.tail = prevNode
-    } 
+      this.tail.prev = null
+      prevNode.next = null
+      this.tail = prevNode
+    }
     this.length--
     return currenttail.value
+  }
+  shift() {
+    if (this.length === 0) {
+      return undefined
+    }
+    let currentHead = this.head
+    if (this.length === 1) {
+      [this.head, this.tail] = [null, null]
+    } else {
+      let nextHead = this.head.next
+      nextHead.prev = null
+      currentHead.next = null
+      this.head = nextHead
+    }
+    this.length--
+    return currentHead.value
+  }
+  unshift(val){
+    // to add element at the start
+    let newNode = new Node(val)
+    if(!this.head){
+      this.head = newNode
+      this.tail = this.head
+    }else{
+      newNode.prev = null
+      newNode.next = this.head
+      this.head.prev = newNode
+      this.head = newNode
+    }
+    this.length++
+    return this 
   }
 }
 
