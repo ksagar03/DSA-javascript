@@ -9,7 +9,16 @@ there are various way to implement stacks: <br/>
  <br/>
 2. Using singly linked list: we can write our own method to remove the add and remove the data but the problem is pop method in singly linked list is have having time complexity of O(n) so insted of that I will be defining shift and unshift methods
 <br/>
-<img class="image" src="images/time_complexity_of_stacks.PNG" />`)
+<img class="image" src="images/time_complexity_of_stacks.PNG" />
+<br/>
+<br/>
+<b>QUEUES:</b> It is similar to stacks but the only difference is it fallows <b>FIFO - First In First Out</b>
+<br/>
+there are various way to implement stacks: <br/> 
+ 1. built in method on array: using push and shift (or unshift and pop ) method we can follow the principle FIFO <br/>
+ 2. Using singly linked list `)
+
+
 class Node{
   constructor(val){
     this.value = val,
@@ -49,6 +58,36 @@ unshift(val){
     return this
   }
 }
+// queues method --------------------------------------------------------
+class queue{
+  constructor(){
+    this.first =null
+    this.last = null
+    this.size = 0
+  }
+  push(val){
+    let newNode = new Node(val)
+    if(!this.first){
+      this.first = newNode
+      this.last = this.first
+    }else{
+      this.last.next = newNode
+      this.last = newNode
+    }
+    this.size++
+    return this
+  }
+  shift(){
+    if(!this.first) return "please insert the value to remove"
+   this.first = this.first.next
+    this.size--
+    if(this.size==0){
+      this.first = null
+      this.last =null
+    }
+    return this
+  }
+}
 
 
 let list = new stack()
@@ -60,6 +99,10 @@ list.unshift(80)
 // list.unshift(50)
 // list.unshift(40)
 
-
-
- 
+let queues = new queue()
+queues.push(10)
+queues.push(20)
+queues.push(30)
+queues.push(40)
+queues.push(50)
+queues.push(60)
