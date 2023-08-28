@@ -89,9 +89,6 @@ class SinglyLinkedList {
     return oldhead
   }
   unshift(val) {
-    if (!this.head) {
-      return undefined
-    }
     var newheadnode = new Node(val)
     if (this.head == null && this.tail == null) {
       this.head = newNode
