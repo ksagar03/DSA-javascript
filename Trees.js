@@ -19,3 +19,48 @@ There are so many types of trees which follows same principle but have different
 <img class="image" src="images/Binary tree vs BST.png"/> <br/>
 
 `)
+
+
+class Node{
+  constructor(val){
+    this.value = val
+    this.left =null
+    this.right = null
+  }
+}
+class binarysearchtree{
+  constructor(){
+    this.root = null
+  }
+  insert(val){
+    let newNode = new Node(val) 
+    if(!this.root){
+      this.root = newNode
+      return this
+    }else{
+      let current = this.root
+    while(true){
+      if(val < current.value ){
+        if(current.left === null){
+          current.left = newNode
+          return this
+        }
+        else current = current.left
+     }
+      if(val > newNode.value ){
+      if(current.right === null){
+        current.right = newNode
+        return this
+      }
+      else  current = current.right
+    }
+    }
+  }
+  }
+}
+
+let BST = new binarysearchtree()
+// BST.root = new Node(100)
+// BST.root.left = new Node(70)
+// BST.root.right = new Node(110)
+BST.insert(100)
