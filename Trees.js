@@ -26,6 +26,7 @@ class Node{
     this.value = val
     this.left =null
     this.right = null
+    this.count = 0
   }
 }
 class binarysearchtree{
@@ -40,6 +41,14 @@ class binarysearchtree{
     }else{
       let current = this.root
     while(true){
+// Here if we have a duplicate values then the while loop will run in infinite so to avoide that we can either 
+// 1.ignore the duplicate or 
+// 2. we can have a count which will have count of each node
+//  i will implement 2nd method
+      if (val === current.value){
+        current.count++
+        return this
+      }
       if(val < current.value ){
         if(current.left === null){
           current.left = newNode
@@ -47,7 +56,7 @@ class binarysearchtree{
         }
         else current = current.left
      }
-      if(val > newNode.value ){
+      else if(val > current.value ){
       if(current.right === null){
         current.right = newNode
         return this
@@ -64,3 +73,4 @@ let BST = new binarysearchtree()
 // BST.root.left = new Node(70)
 // BST.root.right = new Node(110)
 BST.insert(100)
+
