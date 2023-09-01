@@ -17,7 +17,13 @@ There are so many types of trees which follows same principle but have different
 <b><h3>1. Binary Trees:</h3></b> From the name Binary we can get to know it is refering to 2 i.e each node will be having max to max two childrens.
 <ul><b><h4>1.1 Binary Search Trees:</h4></b> It this Trees the data's will be arranged in such a way that each node's(value) left children value will be less than the current node value and right children's value will be more than the current node value</ul>
 <img class="image" src="images/Binary tree vs BST.png"/> <br/>
-
+<b>Time complexity</b>:
+for INSERTING & SEARCHING we will have average time complexity of O(log n) which is pretty much good
+<br/>
+but for the worst case time complexity - were we have one sided BST Eg: <br/>
+<img class="image" src="images/Worst_case_BST.png" />
+<br/>
+here for searching the value 91 in BST we need go all the way to end so it will take O(n) time complexity.
 `)
 
 
@@ -66,6 +72,27 @@ class binarysearchtree{
     }
   }
   }
+  find(val){
+    if(!this.root){
+      return "please insert value"
+    }
+      let isfound = false
+      let current = this.root
+      while(current && !isfound){
+        // if the value is not htere in the tree and we met end of the tree (i.e current === leaf node left or rigt value(which will be null) ) 
+        if(val < current.value){
+          current = current.left
+          }
+        else if(val > current.value){
+          current = current.right
+        }
+        else {
+        isfound = true
+        return current
+        }
+      }
+    return "the value was not found"
+  }
 }
 
 let BST = new binarysearchtree()
@@ -73,4 +100,8 @@ let BST = new binarysearchtree()
 // BST.root.left = new Node(70)
 // BST.root.right = new Node(110)
 BST.insert(100)
+BST.insert(150)
+BST.insert(20)
+BST.insert(50)
+BST.insert(200)
 
