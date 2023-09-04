@@ -1,4 +1,4 @@
-document.write(`<b><h1>Trees</h1></b> <br/>
+document.write(`<b><h1>Trees</h1></b>
 It is a data structure which consists of nodes in a parent/child relation ship <br/>
 <img class="image" src="images/Trees.png"/> <br/>
 <img class="image" src="images/Tree terminology.png"/> <br/>
@@ -17,8 +17,8 @@ There are so many types of trees which follows same principle but have different
 <b><h3>1. Binary Trees:</h3></b> From the name Binary we can get to know it is refering to 2 i.e each node will be having max to max two childrens.
 <ul><b><h4>1.1 Binary Search Trees:</h4></b> It this Trees the data's will be arranged in such a way that each node's(value) left children value will be less than the current node value and right children's value will be more than the current node value</ul>
 <img class="image" src="images/Binary tree vs BST.png"/> <br/>
-<b>Time complexity</b>:
-for INSERTING & SEARCHING we will have average time complexity of O(log n) which is pretty much good
+<h3>Time complexity:</h3>
+for <u>INSERTING & SEARCHING </u> we will have average time complexity of O(log n) which is pretty much good
 <br/>
 but for the worst case time complexity - were we have one sided BST Eg: <br/>
 <img class="image" src="images/Worst_case_BST.png" />
@@ -79,7 +79,7 @@ class binarysearchtree{
       let isfound = false
       let current = this.root
       while(current && !isfound){
-        // if the value is not htere in the tree and we met end of the tree (i.e current === leaf node left or rigt value(which will be null) ) 
+        // if the value is not htere in the tree and we met end of the tree (i.e current === leaf node left or rigt value(which will be null) then i will break the loop ) 
         if(val < current.value){
           current = current.left
           }
