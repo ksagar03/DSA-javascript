@@ -18,3 +18,64 @@ In DFS we have 3 different approaches
 
 
 `)
+
+class Node{
+  constructor(val){
+    this.value=val
+    this.left = null
+    this.right = null
+    
+  }
+}
+class tree{
+  constructor(){
+    this.root = null 
+  }
+  push(val){
+    let Newnode = new Node(val)
+    if (this.root == null){
+      this.root = Newnode
+      return this
+    }else{
+      let current = this.root
+      while(true)
+      {
+        if (!current.left){
+        current.left = Newnode
+        return this
+      } else if (!current.right)
+      {
+        current.right = Newnode
+        return this
+      } else current =current.left
+        
+      }
+       
+    }
+  }
+  //  implementing BFS 
+ BFS(){
+    let currentNode = this.root, 
+      queue =[],
+      result = []
+   queue.push(this.root)
+   while(queue.length){
+     currentNode = queue.shift()
+     result.push(currentNode.value)
+     if(currentNode.left) queue.push(currentNode.left)
+     if(currentNode.right) queue.push(currentNode.right) 
+     
+   }
+   return result
+  }
+}
+
+let list = new tree()
+list.push(10)
+list.push(6)
+list.push(15)
+list.push(3)
+list.push(9)
+list.push(20)
+list.push(12)
+list.push(10)
