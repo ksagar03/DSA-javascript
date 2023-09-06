@@ -68,6 +68,18 @@ class tree{
    }
    return result
   }
+  DFS_pre_order(){
+    let data = []
+    let current = this.root
+    const DFStraverse = (node) => {
+      data.push(node.value)
+      if(node.left) DFStraverse(node.left)
+      if(node.right) DFStraverse(node.right) 
+    }
+    DFStraverse(current)
+    return data
+  }
+  
 }
 
 let list = new tree()
@@ -79,3 +91,20 @@ list.push(9)
 list.push(20)
 list.push(12)
 list.push(10)
+
+/*DFS_pre_order(){
+    let currentNode = this.root,
+      queue = [],
+      resultleft = [],
+      resultright = []
+    queue.push(this.root)
+    while(queue.length){
+      currentNode = queue.shift()
+      let node = currentNode
+      result.push(currentNode)
+      if(currentNode.left){
+        currentNode= currentNode.left
+        queue.push(currentNode)
+      }
+    }
+  } */
