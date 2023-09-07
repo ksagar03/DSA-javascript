@@ -58,14 +58,18 @@ class tree{
     let currentNode = this.root, 
       queue =[],
       result = []
+   let leftH =0, rightH =0
    queue.push(this.root)
    while(queue.length){
      currentNode = queue.shift()
      result.push(currentNode.value)
-     if(currentNode.left) queue.push(currentNode.left)
-     if(currentNode.right) queue.push(currentNode.right) 
+     if(currentNode.left) {queue.push(currentNode.left)
+                        leftH++  }
+     if(currentNode.right) {queue.push(currentNode.right)
+                         rightH++  }
      
    }
+   console.log(Math.max(leftH,rightH))
    return result
   }
   DFS_pre_order(){
@@ -79,8 +83,31 @@ class tree{
     DFStraverse(current)
     return data
   }
-  
+  DFS_Post_order(){
+    let data =[]
+    let current = this.root
+    const DFSPostTraverse = (node) => {
+      if(node.left)DFSPostTraverse(node.left)
+      if(node.right)DFSPostTraverse(node.right)
+      data.push(node.value)
+    }
+    DFSPostTraverse(current)
+    return data
+  }
+  DFS_In_order(){
+    let data =[]
+    let current = this.root
+    const DFSInTraverse = (node) => {
+      if(node.left)DFSInTraverse(node.left)
+       data.push(node.value)
+      if(node.right)DFSInTraverse(node.right)
+     
+    }
+    DFSInTraverse(current)
+    return height
+  }
 }
+
 
 let list = new tree()
 list.push(10)
@@ -91,6 +118,8 @@ list.push(9)
 list.push(20)
 list.push(12)
 list.push(10)
+list.push(19)
+list.push(17)
 
 /*DFS_pre_order(){
     let currentNode = this.root,
