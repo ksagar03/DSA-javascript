@@ -15,8 +15,15 @@ In DFS we have 3 different approaches
 <img class="image" src="images/DFS_In-order.png" />
 <img class="image" src="images/DFS_Pre-order.png" />
 <img class="image" src="images/DFS_Post-order.png" />
-
-
+<h3>BFS or DFS which one better??</h3>
+<li>Answer is it all depends on the tree</li>
+<li>In DFS and BFS time complexity is same so we need to consider space complexity for comparion</li>
+<img class="image" src="images/basic_tree_eg.PNG" />
+<br/>
+take an example of this tree where we have so many nodes,
+<li>In BFS we need to store each node in a queue so the space complexity is more but DFS we are directly storing the value in the result </li>
+<img class="image" src="images/Worst_case_BST.png" />
+<li>Here it is vise-versa DFS will take more space than BFS, as in BFS the values will be removed from the queue so the space complexity is less compared to DFS </li>
 `)
 
 class Node{
