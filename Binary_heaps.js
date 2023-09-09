@@ -19,3 +19,31 @@ eg:
 <b>Binary heap Most commonlly used used to implement <u>priority Queues</u> </b>
 also Binary heaps are used in graphs traversal
 `)
+
+class MaxBinHeap{
+  constructor(){
+    this.value = [41,39,33,18,27,12,]
+  }
+  
+insert(val){
+  this.value.push(val)
+  let arr = this.ToFindCorrectPlace()
+  return arr
+}
+  ToFindCorrectPlace(){
+    let arr = this.value
+    let currentIndex = this.value.length - 1
+    let parentIndex = Math.floor(currentIndex-1/2)
+    while(arr[currentIndex] > arr[parentIndex] && currentIndex >0 ){
+      [arr[currentIndex],arr[parentIndex]] = [arr[parentIndex],arr[currentIndex]] 
+      currentIndex = parentIndex
+      parentIndex = Math.floor(currentIndex-1/2)
+      
+    
+  }
+    this.value = arr
+    return arr
+  }
+}
+list = new MaxBinHeap()
+
