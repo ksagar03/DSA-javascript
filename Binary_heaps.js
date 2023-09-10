@@ -22,7 +22,7 @@ also Binary heaps are used in graphs traversal
 
 class MaxBinHeap{
   constructor(){
-    this.value = [41,39,33,18,27,12,]
+    this.value = [41,39,33,18,27,12]
   }
   
 insert(val){
@@ -44,6 +44,86 @@ insert(val){
     this.value = arr
     return arr
   }
+  // ExtractMaxBinary(){
+  //   let arr = this.value
+  //  let parentIndex = 0
+  //   const oldRoot = this.value[0]
+  //     let lastNode = arr.pop()
+  //   arr[0] = lastNode
+  //   console.log(arr)
+  //   // [arr[0],arr[arr.length-1]] = [arr[arr.length-1],arr[0]]
+  //   let childIndex1  = 2*parentIndex + 1
+  //   let childIndex2 = 2*parentIndex + 2
+  //   let maxChildValue = Math.max(arr[childIndex1],arr[childIndex2])
+    
+  //   while(arr[parentIndex] < maxChildValue){
+      
+  //     let temp = maxChildValue
+  //       // console.log(maxChildValue)
+  //       // console.log(arr[parentIndex])
+  //       if(arr[childIndex1] == temp){
+  //       temp = childIndex1
+  //     }else temp = childIndex2 
+  //         console.log(temp)
+  //     [arr[parentIndex],arr[temp]] = [arr[temp], arr[parentIndex]]
+  //   parentIndex = temp
+  //   childIndex1  = 2*parentIndex + 1
+  //   childIndex2 = 2*parentIndex + 2
+  //   maxChildValue = Math.max(arr[childIndex1],arr[childIndex2])
+  //     console.log(maxChildValue)
+  // }
+  //   this.value = arr
+  //   return oldRoot
+  // }
+  //  the problem with above solution is if the ethier of the childindex is null then can't swap the value
+  
+ExtractMaxBin(){
+  
+  // let length = this.value.length
+  let oldroot = this.value[0]
+  let lastNode  =  this.value.pop()
+  if (this.value.length > 0){
+   this.value[0] = lastNode
+  this.bubblein() 
+  }
+  
+  return oldroot
+}
+  bubblein(){
+    let parentindex= 0
+    let element = this.value[0]
+    while(true)
+    {
+      
+      let length = this.value.length
+      let childindex1  = 2*parentindex + 1
+      let childindex2 = 2*parentindex + 2
+      let leftChild, rightChild
+      let swap = null
+      if (childindex1 < length){
+      leftChild = this.value[childindex1]
+      if(element < leftChild){
+        swap = childindex1
+      }
+      }
+
+    if (childindex2 < length){
+     rightChild = this.value[childindex2]
+      if((swap === null && element < rightChild)||
+        (swap !== null &&  rightChild > leftChild)){
+        swap = childindex2
+      }
+    }
+     
+      if(swap == null) break;
+       [this.value[parentindex],this.value[swap]]= 
+      [this.value[swap],this.value[parentindex]]
+      parentindex = swap
+      element = this.value[swap] 
+    
+    }
+  }
 }
 list = new MaxBinHeap()
+// need to check this ExtractBinmax
 
