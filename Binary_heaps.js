@@ -18,6 +18,10 @@ eg:
 <br/>
 <b>Binary heap Most commonlly used used to implement <u>priority Queues</u> </b>
 also Binary heaps are used in graphs traversal
+<h3>Priority Queue:</h3>
+<li>It is a data structure where each element has a priority, and the elements with higher priorities are served before elements with lower priorities.</li>
+<li>Normally in Binary heap the value are stored in array or list and based on the value inserted it will be aranged, <br/>
+But in Priority queue if we follow the same method then time complexity will be more... </li>
 `)
 
 class MaxBinHeap{
@@ -127,3 +131,33 @@ ExtractMaxBin(){
 list = new MaxBinHeap()
 // need to check this ExtractBinmax
 
+// Priority Queues: --------------------------------------------------
+
+class Node{
+  constructor(val){
+    this.value = val
+    this.priority = null
+  }
+}
+ class PriorityQueue{
+   constructor(){
+     this.values =[]
+   }
+   insert(val){
+     let NewNode = new Node(val) 
+     this.values.push(NewNode)
+     this.ToFindCorrectPlaceNode()
+   }
+   ToFindCorrectPlaceNode(){
+     let arr= this.values
+     let currentNodeIndex = arr.length - 1
+     let parentNodeIndex = (currentNodeIndex -1)/2
+     while(arr[currentNodeIndex].priority < arr[currentNodeIndex].priority ){
+       [arr[currentNodeIndex],arr[parentNodeIndex]] = 
+       [arr[parentNodeIndex],arr[currentNodeIndex]]
+       currentNodeIndex = parentNodeIndex
+       parentNodeIndex = (currentNodeIndex -1)/2
+     }
+   }
+ }
+ let heap = new PriorityQueue()
