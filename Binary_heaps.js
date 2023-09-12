@@ -134,30 +134,86 @@ list = new MaxBinHeap()
 // Priority Queues: --------------------------------------------------
 
 class Node{
-  constructor(val){
+  constructor(val,priority){
     this.value = val
-    this.priority = null
+    this.priority = priority
   }
 }
  class PriorityQueue{
    constructor(){
      this.values =[]
    }
-   insert(val){
-     let NewNode = new Node(val) 
+   insert(val, priority ){
+     let NewNode = new Node(val, priority) 
      this.values.push(NewNode)
      this.ToFindCorrectPlaceNode()
    }
    ToFindCorrectPlaceNode(){
      let arr= this.values
-     let currentNodeIndex = arr.length - 1
-     let parentNodeIndex = (currentNodeIndex -1)/2
-     while(arr[currentNodeIndex].priority < arr[currentNodeIndex].priority ){
+     let currentNodeIndex = arr.length -1
+      let currentNodevalue = arr[currentNodeIndex]
+     while(currentNodeIndex > 0){
+       let parentNodeIndex= Math.floor(currentNodeIndex -1/2)
+       let parentNodevalue = arr[parentNodeIndex]
+     
+        if(currentNodevalue.priority >= parentNodevalue.priority) break
        [arr[currentNodeIndex],arr[parentNodeIndex]] = 
        [arr[parentNodeIndex],arr[currentNodeIndex]]
        currentNodeIndex = parentNodeIndex
-       parentNodeIndex = (currentNodeIndex -1)/2
-     }
    }
+   }
+  ExtractMinBin(){
+  
+  // let length = this.value.length
+  let oldroot = this.values[0]
+  let lastNode  =  this.values.pop()
+  if (this.values.length > 0){
+   this.values[0] = lastNode
+  this.bubblein() 
+  }
+  
+  return oldroot
+}
+  bubblein(){
+    let parentindex= 0
+    let element = this.values[0]
+    let length = this.values.length
+    while(true)
+    {
+      let childindex1 = 2*parentindex + 1
+      let childindex2 = 2*parentindex + 2
+      let leftChild, rightChild
+      let swap = null
+      if (childindex1 < length){
+      leftChild = this.values[childindex1]
+      if(element.priority > leftChild.priority){
+        swap = childindex1
+      }
+      }
+
+    if (childindex2 < length){
+     rightChild = this.values[childindex2]
+      if((swap === null && element.priority > rightChild.priority)||
+        (swap !== null && rightChild.priority < leftChild.priority)){
+        swap = childindex2
+      }
+    }
+     if(swap === null) break;
+      this.values[parentindex] = this.values[swap]
+      this.values[swap] = element
+      parentindex = swap
+      // element = this.values[swap] 
+    
+    }
+  }   
  }
  let heap = new PriorityQueue()
+heap.insert("feaver", 3)
+heap.insert("surgery",1)
+heap.insert("cough",4)
+heap.insert("fracture",2)
+heap.insert("headache",5)
+heap.insert("flue",6)
+//  getting wrong answer for this need to check this one
+
+
