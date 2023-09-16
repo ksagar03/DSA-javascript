@@ -31,3 +31,54 @@ In aobe example we had numbers what if insted of numbers we had some strings so 
 <h3>Time and space complexity b/n Adjacency matrix and Adjacency list</h3>
 <img class="image" src="images/Big O of Adj matrix and list.png" />
 `)
+
+// Building a uni-directed Graph
+class Graph{
+  constructor(){
+    this.adjlist = {}
+  }
+  addvertex(vertex){
+   if(!this.adjlist[vertex]) this.adjlist[vertex] = []
+    else return alert("this vertex already exsist please add another vertex")
+    // if the vertex is already there then it will be rewitten so to avoid that if condition is written
+  }
+  addedges(v1,v2){
+    if(this.adjlist[v1] && this.adjlist[v2]){
+      this.adjlist[v1].push(v2)
+      this.adjlist[v2].push(v1)
+      return this.adjlist
+    }else{
+      return alert("vertex is not there in the list")
+    }
+  }
+
+removeedges(v1,v2){
+   if(this.adjlist[v1] || this.adjlist[v2]){
+     this.adjlist[v1]  = this.adjlist[v1].filter( v => v !== v2)
+      this.adjlist[v2]  = this.adjlist[v2].filter( v => v !== v1)
+   }else{
+      return alert("vertex is not there in the list")
+    }
+}
+removevertex(v1){
+  if(this.adjlist[v1]){
+     let vertex = this.adjlist[v1]
+    for(let i in vertex){
+      this.removeedges(v1,vertex[i])
+    }
+   delete this.adjlist[v1]
+  }else{
+      return alert("vertex is not--- there in the list")
+    }
+}
+}
+let graph = new Graph()
+graph.addvertex("sagar")
+graph.addvertex("surya")
+graph.addvertex("kiran")
+graph.addedges("sagar","surya")
+graph.addedges("sagar","kiran")
+graph.addedges("kiran","surya")
+
+
+
