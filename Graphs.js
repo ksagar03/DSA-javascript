@@ -37,12 +37,12 @@ class Graph{
   constructor(){
     this.adjlist = {}
   }
-  addvertex(vertex){
+  addVertex(vertex){
    if(!this.adjlist[vertex]) this.adjlist[vertex] = []
     else return alert("this vertex already exsist please add another vertex")
     // if the vertex is already there then it will be rewitten so to avoid that if condition is written
   }
-  addedges(v1,v2){
+  addEdge(v1,v2){
     if(this.adjlist[v1] && this.adjlist[v2]){
       this.adjlist[v1].push(v2)
       this.adjlist[v2].push(v1)
@@ -71,14 +71,79 @@ removevertex(v1){
       return alert("vertex is not--- there in the list")
     }
 }
+ 
+  DFS_recursive(vertex){
+    let isVisited = {}
+    let result =[]
+    let adjlist = this.adjlist
+    function DFS(vertex){
+    if(!vertex){
+      return null
+    }
+      isVisited[vertex] = true
+      result.push(vertex)
+       // this.adjlist[vertex]  this line will not work as this will be pointing twoards the attributes of current function(DFS)
+      adjlist[vertex].map(value => {
+        if(!isVisited[value]){
+         return  DFS(value)
+        }
+      })   
+  } 
+    DFS(vertex)
+    return result
+    
+  }
+  DFS_itirative(vertex){
+    let stack = []
+    let isvisited = {}
+    let result = [] 
+    stack.push(vertex)
+    while (stack.length)
+    {
+      vertex = stack.pop()
+      if(!isvisited[vertex])
+      {
+        isvisited[vertex] = true
+        result.push(vertex)
+        this.adjlist[vertex].map(value => stack.push(value))
+      }
+    }
+    return result
+  }
+  
 }
-let graph = new Graph()
-graph.addvertex("sagar")
-graph.addvertex("surya")
-graph.addvertex("kiran")
-graph.addedges("sagar","surya")
-graph.addedges("sagar","kiran")
-graph.addedges("kiran","surya")
+let g = new Graph()
+g.addVertex("A")
+g.addVertex("B")
+g.addVertex("C")
+g.addVertex("D")
+g.addVertex("E")
+g.addVertex("F")
+g.addEdge("A","B")
+g.addEdge("A","C")
+g.addEdge("B","D")
+g.addEdge("C","E")
+g.addEdge("D","E")
+g.addEdge("D","F")
+g.addEdge("E","F")
 
+
+// ---------------------------------------------------------
+// Graph traversal---
+document.write(`<h2>Graph traversal</h3>
+There are two basic methods for traverse
+<li>DFS(Depth first serach)</li>
+<li>BFS(breadth first search)</li>
+Unlilke in binary tree we used to start from the root and traverse all the node but in Graph there is no concept of root node
+<br/>
+<img class="image" src="images/graph_traversal.png" />
+In BFS first we will cover all the edges of one vertex and then we will go to next vertex <br/>
+Eg: take a vertex "0" which has following edges [1,6,2] so it will traverse this conected vertex then it will move to next vertex....
+<br/>
+<br/>
+In DFS it will traverse to the next vertex one by one
+Eg: Lets take a vertex "0"(let us traverse increasing order) so it will start traversing from 0->1->5 after 5 there is no were to go so it will move back to 1 and traverse the other side so it will go like this 0->1->5->6->7->9->8->6 
+<li>Taking this below example to implement the DFS code</li>
+<img class="image" src="images/graph_DFS.png"/>`)
 
 
