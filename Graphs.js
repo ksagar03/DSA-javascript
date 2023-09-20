@@ -110,6 +110,43 @@ removevertex(v1){
     }
     return result
   }
+  BFS_iterative(vertex){
+    let queue =[]
+    let isvisited ={}
+    let result =[]
+    queue.push(vertex)
+    while(queue.length){
+      vertex = queue.shift()
+      if(!isvisited[vertex]){
+        isvisited[vertex] = true
+        result.push(vertex)
+        this.adjlist[vertex].map(value => queue.push(value))
+      }
+     // In the Above code all the values will added to queue so for smaller graph it is easy to store thos e things in queue but what if the graph is too huge
+      
+    }
+    return result
+  }
+  BFS_improvedIterative(vertex){
+    let queue =[vertex]
+    let isvisited ={}
+    let result =[]
+  isvisited[vertex] = true
+    while(queue.length){
+      vertex = queue.shift()
+      result.push(vertex)
+      this.adjlist[vertex].map(value =>
+        {
+        if(!isvisited[value])
+        {
+        isvisited[value] = true
+         queue.push(value)
+        }
+      })
+      //  for this space complextity wil be less
+    }
+    return result
+  }
   
 }
 let g = new Graph()
