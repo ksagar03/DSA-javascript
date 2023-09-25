@@ -16,93 +16,85 @@ there are various way to implement stacks: <br/>
 <br/>
 there are various way to implement stacks: <br/> 
  1. built in method on array: using push and shift (or unshift and pop ) method we can follow the principle FIFO <br/>
- 2. Using singly linked list `)
+ 2. Using singly linked list `);
 
-
-class Node{
-  constructor(val){
-    this.value = val,
-      this.next = null
+class Node {
+  constructor(val) {
+    (this.value = val), (this.next = null);
   }
 }
-class stack{
-  constructor(){
-    this.first = null,
-      this.last = null,
-      this.size = 0
+class stack {
+  constructor() {
+    (this.first = null), (this.last = null), (this.size = 0);
   }
-unshift(val){
-  let newNode = new Node(val)
-  if(!this.first){
-    this.first = newNode
-    this.last = this.first
-  }
-   else{
-     let currenthead = this.first
-     this.first = newNode
-     newNode.next = currenthead
-     
-   }
-  this.size++
-  return this
-  
-}
-  shift(){
-    if(!this.first) return "please insert the value to remove"
-   this.first = this.first.next
-    this.size--
-    if(this.size==0){
-      this.first = null
-      this.last =null
+  unshift(val) {
+    let newNode = new Node(val);
+    if (!this.first) {
+      this.first = newNode;
+      this.last = this.first;
+    } else {
+      let currenthead = this.first;
+      this.first = newNode;
+      newNode.next = currenthead;
     }
-    return this
+    this.size++;
+    return this;
+  }
+  shift() {
+    if (!this.first) return "please insert the value to remove";
+    this.first = this.first.next;
+    this.size--;
+    if (this.size == 0) {
+      this.first = null;
+      this.last = null;
+    }
+    return this;
   }
 }
 // queues method --------------------------------------------------------
-class queue{
-  constructor(){
-    this.first =null
-    this.last = null
-    this.size = 0
+class queue {
+  constructor() {
+    this.first = null;
+    this.last = null;
+    this.size = 0;
   }
-  push(val){
-    let newNode = new Node(val)
-    if(!this.first){
-      this.first = newNode
-      this.last = this.first
-    }else{
-      this.last.next = newNode
-      this.last = newNode
+  push(val) {
+    let newNode = new Node(val);
+    if (!this.first) {
+      this.first = newNode;
+      this.last = this.first;
+    } else {
+      this.last.next = newNode;
+      this.last = newNode;
     }
-    this.size++
-    return this
+    this.size++;
+    return this;
   }
-  shift(){
-    if(!this.first) return "please insert the value to remove"
-   this.first = this.first.next
-    this.size--
-    if(this.size==0){
-      this.first = null
-      this.last =null
+  shift() {
+    if (!this.first) return "please insert the value to remove";
+    this.first = this.first.next;
+    this.size--;
+    if (this.size == 0) {
+      this.first = null;
+      this.last = null;
     }
-    return this
+    return this;
   }
 }
 
-
-let list = new stack()
-list.unshift(100)
-list.unshift(90)
-list.unshift(80)
+let list = new stack();
+list.unshift(100);
+list.unshift(90);
+list.unshift(80);
 // list.unshift(70)
 // list.unshift(60)
 // list.unshift(50)
 // list.unshift(40)
 
-let queues = new queue()
-queues.push(10)
-queues.push(20)
-queues.push(30)
-queues.push(40)
-queues.push(50)
-queues.push(60)
+let queues = new queue();
+queues.push(10);
+queues.push(20);
+queues.push(30);
+queues.push(40);
+queues.push(50);
+queues.push(60);

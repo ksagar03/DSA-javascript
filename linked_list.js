@@ -8,189 +8,184 @@ The linked list contains <u>head</u> and <u>tail</u> which points towards start 
 <img class="image" src="/images/linked_list_eg.jpg">
 <br/>
 In linked list insertion and deletion of values was easy but accessing values randomlly is not so easy. <br/>
-<b>Time Complexity </b>: <br/> For insertion it is O(1) (but in array it is O(n) ) <br/>for removal it is O(1)(this is for removing the data from the start) or O(n) (when the data is removed from the last then we need to iterate over the list) <br/> for searching and accessing the data it is O(n)  `)
-
+<b>Time Complexity </b>: <br/> For insertion it is O(1) (but in array it is O(n) ) <br/>for removal it is O(1)(this is for removing the data from the start) or O(n) (when the data is removed from the last then we need to iterate over the list) <br/> for searching and accessing the data it is O(n)  `);
 
 //  lets start with code
 class Node {
   constructor(val) {
-    this.value = val
-    this.next = null
+    this.value = val;
+    this.next = null;
     // here if next value is not assigned or created then it assign value null
   }
 }
 class SinglyLinkedList {
   constructor() {
-    this.head = null
-    this.tail = null
-    this.length = 0
+    this.head = null;
+    this.tail = null;
+    this.length = 0;
     // at the start head and tail will be assigned with value null after inserting the value head and tail will get updated
   }
   push(val) {
-    var newNode = new Node(val)
+    var newNode = new Node(val);
     if (this.head == null && this.tail == null) {
-      this.head = newNode
-      this.tail = this.head
+      this.head = newNode;
+      this.tail = this.head;
     } else {
-      this.tail.next = newNode
-      this.tail = newNode
+      this.tail.next = newNode;
+      this.tail = newNode;
     }
-    this.length++
+    this.length++;
     // if we are not returning any value then it will show as undefiend
     //  so to return whole list just need to return this  --> it will return the current list
-    return this
+    return this;
   }
   traverse() {
-    let arr = []
-    let current = this.head
+    let arr = [];
+    let current = this.head;
     while (current) {
-      arr.push(current.value)
-      current = current.next
+      arr.push(current.value);
+      current = current.next;
     }
-    return arr
+    return arr;
   }
   pop() {
     if (!this.head) {
-      return undefined
+      return undefined;
     }
-    var current = this.head
-    var prev = current
+    var current = this.head;
+    var prev = current;
     while (current.next) {
-      prev = current
-      current = current.next // this line will help us to move one element ahead
-
+      prev = current;
+      current = current.next; // this line will help us to move one element ahead
     }
-    this.tail = prev
-    this.tail.next = null
-    this.length--
-    if (this.length === 0) { // this is an edge case where if the length is equal to zero then head and tail will be assigned null
-      this.head = null
-      this.tail = null
+    this.tail = prev;
+    this.tail.next = null;
+    this.length--;
+    if (this.length === 0) {
+      // this is an edge case where if the length is equal to zero then head and tail will be assigned null
+      this.head = null;
+      this.tail = null;
     }
-    return current
+    return current;
     // perv.next = null
   }
   shift() {
     //  to remvoe start of the element
     if (!this.head) {
-      return undefined
+      return undefined;
     }
-    var oldhead = this.head
+    var oldhead = this.head;
     // var nexthead= this.head.next
-    this.head = oldhead.next
-    this.length--
-    console.log(oldhead.value)
+    this.head = oldhead.next;
+    this.length--;
+    console.log(oldhead.value);
     // console.log(nexthead.value)
-    console.log(this.head.value)
-    if (this.length === 0) { // this is an edge case where if the length is equal to zero then head and tail will be assigned null
-      this.head = null
-      this.tail = null
+    console.log(this.head.value);
+    if (this.length === 0) {
+      // this is an edge case where if the length is equal to zero then head and tail will be assigned null
+      this.head = null;
+      this.tail = null;
     }
-    return oldhead
+    return oldhead;
   }
   unshift(val) {
-    var newheadnode = new Node(val)
+    var newheadnode = new Node(val);
     if (this.head == null && this.tail == null) {
-      this.head = newNode
-      this.tail = this.head
+      this.head = newNode;
+      this.tail = this.head;
+    } else {
+      var currenthead = this.head;
+      this.head = newheadnode;
+      newheadnode.next = currenthead;
+      this.length++;
     }
-    else {
-      var currenthead = this.head
-      this.head = newheadnode
-      newheadnode.next = currenthead
-      this.length++
-    }
-    return this
+    return this;
   }
   get(position) {
     if (position < 0 || position >= this.length) {
-      return "undefined position"
+      return "undefined position";
     }
-    let currentnode = this.head
+    let currentnode = this.head;
     for (let i = 0; i < position; i++) {
-      currentnode = currentnode.next
+      currentnode = currentnode.next;
     }
     // console.log(currentnode)
-    return currentnode
+    return currentnode;
   }
   set(index, val) {
-    // to change the value of the node for the given index 
-    let nodeindex = this.get(index)
+    // to change the value of the node for the given index
+    let nodeindex = this.get(index);
     if (nodeindex) {
-      nodeindex.value = val
+      nodeindex.value = val;
     } else {
-      return "undeifned index"
+      return "undeifned index";
     }
-    return nodeindex
+    return nodeindex;
   }
   insert(index, val) {
     // this will insert a value at given position
-    // to cover up edge cases 
+    // to cover up edge cases
     if (index < 0 || index > this.length) {
-      return "please provide valid index"
+      return "please provide valid index";
     }
     if (index === 0) {
-      let value = this.unshift(val)
+      let value = this.unshift(val);
       if (value) {
-        return true
-      } else return false
+        return true;
+      } else return false;
       // or return !! this.unshit(val) this will return true or false
     }
     if (index === this.length) {
-      let value = this.push(val)
+      let value = this.push(val);
       if (value) {
-        return true
-      } else return false
+        return true;
+      } else return false;
       // or return !! this.push(val) this will return true or false
     }
     // all the edge cases covered
-    let previndexnode = this.get(index - 1)
+    let previndexnode = this.get(index - 1);
     // let currentindexnode = this.get(index)// insted of calling a get function again which will add more time complexity, just we can do previndexnode.next
-    let currentindexnode = previndexnode.next
-    let newindexnode = new Node(val)
-    previndexnode.next = newindexnode
-    newindexnode.next = currentindexnode
-    this.length++
-    return this
-
+    let currentindexnode = previndexnode.next;
+    let newindexnode = new Node(val);
+    previndexnode.next = newindexnode;
+    newindexnode.next = currentindexnode;
+    this.length++;
+    return this;
   }
   remove(index) {
     if (index < 0 || index > this.length) {
-      return false
+      return false;
     }
     if (index === 0) {
-      return !!this.set()
+      return !!this.set();
     }
-    if (index === this.length) return !!this.pop()
-    let prevIndexNode = this.get(index - 1)
-    let currentIndexNode = prevIndexNode.next
-    prevIndexNode.next = currentIndexNode.next
-    this.length--
-    return true
+    if (index === this.length) return !!this.pop();
+    let prevIndexNode = this.get(index - 1);
+    let currentIndexNode = prevIndexNode.next;
+    prevIndexNode.next = currentIndexNode.next;
+    this.length--;
+    return true;
   }
   reverse() {
     if (!this.head) {
-      return "please insert the data"
-   }
+      return "please insert the data";
+    }
     //  Here in reverse the current node should point towards the previous node that
     //  but if we do like that then "next node pointer will be gone" so to overcome that we should save the next node in some variable before pointing towards the previous pointer
-    let currentnode = this.head 
-    this.head = this.tail // here swaping of head and tail is happening
-    this.tail = currentnode
-    let next
-    let prevnode = null
+    let currentnode = this.head;
+    this.head = this.tail; // here swaping of head and tail is happening
+    this.tail = currentnode;
+    let next;
+    let prevnode = null;
     for (let i = 0; i < this.length; i++) {
-      next = currentnode.next // current nodes next is saved in the variable  
-      currentnode.next = prevnode
-      prevnode = currentnode
-      currentnode = next
-
+      next = currentnode.next; // current nodes next is saved in the variable
+      currentnode.next = prevnode;
+      prevnode = currentnode;
+      currentnode = next;
     }
-    return this
+    return this;
   }
 }
-
-
 
 // var first = new Node("1")
 
@@ -211,21 +206,19 @@ __proto__: Object
 value: "hi"
 __proto__: Object 
 */
-let list = new SinglyLinkedList()
-list.push(1)
-list.push(2)
-list.push(3)
-list.push(4)
-list.push(5)
-list.push(6)
-list.push(7)
-list.push(8)
-list.push(9)
-list.push(10)
+let list = new SinglyLinkedList();
+list.push(1);
+list.push(2);
+list.push(3);
+list.push(4);
+list.push(5);
+list.push(6);
+list.push(7);
+list.push(8);
+list.push(9);
+list.push(10);
 
-
-
-console.log(list)
+console.log(list);
 // At the start it will be empty
 // SinglyLinkedList {head: null, tail: null, length: 0}
 /*
@@ -248,4 +241,3 @@ value: "sagar"
 __proto__: Object
 __proto__: Object
  */
-

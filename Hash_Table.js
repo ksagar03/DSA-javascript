@@ -23,19 +23,19 @@ In this if the two or more key has been assigned same position then it will move
 <li>Accessing: O(1)</li>
 
 
-`) 
+`);
 
 //  A simple Hash function
-const SampleHash = (key, length) =>{
-  let total =0
-  for(let i of key){
-    total += i.charCodeAt(0)
-    console.log(total)
+const SampleHash = (key, length) => {
+  let total = 0;
+  for (let i of key) {
+    total += i.charCodeAt(0);
+    console.log(total);
     // total %= length
   }
-  return total%length
-}
-console.log(SampleHash("sagar",23))
+  return total % length;
+};
+console.log(SampleHash("sagar", 23));
 /*
  problems with above Hash function
  1. It will only work when the key is string if the key is value then it does not work
@@ -49,80 +49,76 @@ improvising Hash function
 
  */
 
-const Improvisedhash=(key,maxarrlength) =>{
-  let total = 0
-  let prime_number = 19
-  for (let i = 0; i<Math.min(key.length, 10); i++){
-    total =  total * prime_number + key[i].charCodeAt(0) 
+const Improvisedhash = (key, maxarrlength) => {
+  let total = 0;
+  let prime_number = 19;
+  for (let i = 0; i < Math.min(key.length, 10); i++) {
+    total = total * prime_number + key[i].charCodeAt(0);
   }
-  return total % maxarrlength
-}
-console.log(`Improvised hash function :${Improvisedhash("sagar",30)}`)
+  return total % maxarrlength;
+};
+console.log(`Improvised hash function :${Improvisedhash("sagar", 30)}`);
 //  in this above function also there is a slight chance of collision.
 // To avoid collision there are so manyu ways some of the way
-// 1. separate chaining -> consider 2 keys has been assigned same position, then at the same position it will create a nested array 
+// 1. separate chaining -> consider 2 keys has been assigned same position, then at the same position it will create a nested array
 // 2. Linear probing: In this if the two or more key has been assigned same position then it will move the key to next position
 
-class hashtable{
-  constructor(size=6){
-    this.keymap = new Array(size) // creating a size of 29(note we are taking the size also a prime number)
-    
+class hashtable {
+  constructor(size = 6) {
+    this.keymap = new Array(size); // creating a size of 29(note we are taking the size also a prime number)
   }
-  hash(key){
-    let total =0
-    let prime_number = 37
-    for(let i=0; i<Math.min(key.length, this.keymap.length); i++){
-      total = total *prime_number +key[i].charCodeAt(0) - 96 
+  hash(key) {
+    let total = 0;
+    let prime_number = 37;
+    for (let i = 0; i < Math.min(key.length, this.keymap.length); i++) {
+      total = total * prime_number + key[i].charCodeAt(0) - 96;
     }
-    return total % this.keymap.length
+    return total % this.keymap.length;
   }
-  set(key,value){
-    let hashvalue = this.hash(key)
-    if(!this.keymap[hashvalue]){
-      this.keymap[hashvalue] = []
+  set(key, value) {
+    let hashvalue = this.hash(key);
+    if (!this.keymap[hashvalue]) {
+      this.keymap[hashvalue] = [];
     }
-    this.keymap[hashvalue].push([key,value])
-    return this.keymap
+    this.keymap[hashvalue].push([key, value]);
+    return this.keymap;
   }
-  get(key){
-    let hashvalue = this.hash(key)
-    if(this.keymap[hashvalue])
-    {
-      for(let i in this.keymap[hashvalue])
-        if(this.keymap[hashvalue][i][0] === key){
-           return this.keymap[hashvalue][i][1]
+  get(key) {
+    let hashvalue = this.hash(key);
+    if (this.keymap[hashvalue]) {
+      for (let i in this.keymap[hashvalue])
+        if (this.keymap[hashvalue][i][0] === key) {
+          return this.keymap[hashvalue][i][1];
         }
-    } else return undefined
+    } else return undefined;
   }
-  keys(){
-    let arr_keys =[]
-    for(let i in this.keymap){
-      if(i){
-        for(let j in this.keymap[i])
-        {
-          arr_keys.push(this.keymap[i][j][0])
+  keys() {
+    let arr_keys = [];
+    for (let i in this.keymap) {
+      if (i) {
+        for (let j in this.keymap[i]) {
+          arr_keys.push(this.keymap[i][j][0]);
         }
       }
     }
-    return arr_keys
+    return arr_keys;
   }
-   values(){
-    let arr_value =[]
-    for(let i in this.keymap){
-      if(i){
-        for(let j in this.keymap[i])
-        {
-          arr_value.push(this.keymap[i][j][1])
+  values() {
+    let arr_value = [];
+    for (let i in this.keymap) {
+      if (i) {
+        for (let j in this.keymap[i]) {
+          arr_value.push(this.keymap[i][j][1]);
         }
       }
     }
-    return arr_value
+    return arr_value;
   }
 }
-let ht = new hashtable()
-ht.set("sagar", 9908)
-ht.set("pink", 99)
-ht.set("green", 00908)
-ht.set("yellow", "#908")
-ht.set("blue", 008)
-ht.set("dark", 98)
+let ht = new hashtable();
+ht.set("sagar", 9908);
+ht.set("pink", 99);
+ht.set("green", 00908);
+ht.set("yellow", "#908");
+ht.set("blue", 008);
+ht.set("dark", 98);

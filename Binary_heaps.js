@@ -22,31 +22,32 @@ also Binary heaps are used in graphs traversal
 <li>It is a data structure where each element has a priority, and the elements with higher priorities are served before elements with lower priorities.</li>
 <li>Normally in Binary heap the value are stored in array or list and based on the value inserted it will be aranged, <br/>
 But in Priority queue if we follow the same method then time complexity will be more... </li>
-`)
+`);
 
-class MaxBinHeap{
-  constructor(){
-    this.value = [41,39,33,18,27,12]
+class MaxBinHeap {
+  constructor() {
+    this.value = [41, 39, 33, 18, 27, 12];
   }
-  
-insert(val){
-  this.value.push(val)
-  let arr = this.ToFindCorrectPlace()
-  return arr
-}
-  ToFindCorrectPlace(){
-    let arr = this.value
-    let currentIndex = this.value.length - 1
-    let parentIndex = Math.floor(currentIndex-1/2)
-    while(arr[currentIndex] > arr[parentIndex] && currentIndex >0 ){
-      [arr[currentIndex],arr[parentIndex]] = [arr[parentIndex],arr[currentIndex]] 
-      currentIndex = parentIndex
-      parentIndex = Math.floor(currentIndex-1/2)
-      
-    
+
+  insert(val) {
+    this.value.push(val);
+    let arr = this.ToFindCorrectPlace();
+    return arr;
   }
-    this.value = arr
-    return arr
+  ToFindCorrectPlace() {
+    let arr = this.value;
+    let currentIndex = this.value.length - 1;
+    let parentIndex = Math.floor(currentIndex - 1 / 2);
+    while (arr[currentIndex] > arr[parentIndex] && currentIndex > 0) {
+      [arr[currentIndex], arr[parentIndex]] = [
+        arr[parentIndex],
+        arr[currentIndex],
+      ];
+      currentIndex = parentIndex;
+      parentIndex = Math.floor(currentIndex - 1 / 2);
+    }
+    this.value = arr;
+    return arr;
   }
   // ExtractMaxBinary(){
   //   let arr = this.value
@@ -59,15 +60,15 @@ insert(val){
   //   let childIndex1  = 2*parentIndex + 1
   //   let childIndex2 = 2*parentIndex + 2
   //   let maxChildValue = Math.max(arr[childIndex1],arr[childIndex2])
-    
+
   //   while(arr[parentIndex] < maxChildValue){
-      
+
   //     let temp = maxChildValue
   //       // console.log(maxChildValue)
   //       // console.log(arr[parentIndex])
   //       if(arr[childIndex1] == temp){
   //       temp = childIndex1
-  //     }else temp = childIndex2 
+  //     }else temp = childIndex2
   //         console.log(temp)
   //     [arr[parentIndex],arr[temp]] = [arr[temp], arr[parentIndex]]
   //   parentIndex = temp
@@ -80,140 +81,139 @@ insert(val){
   //   return oldRoot
   // }
   //  the problem with above solution is if the ethier of the childindex is null then can't swap the value
-  
-ExtractMaxBin(){
-  
-  // let length = this.value.length
-  let oldroot = this.value[0]
-  let lastNode  =  this.value.pop()
-  if (this.value.length > 0){
-   this.value[0] = lastNode
-  this.bubblein() 
+
+  ExtractMaxBin() {
+    // let length = this.value.length
+    let oldroot = this.value[0];
+    let lastNode = this.value.pop();
+    if (this.value.length > 0) {
+      this.value[0] = lastNode;
+      this.bubblein();
+    }
+
+    return oldroot;
   }
-  
-  return oldroot
-}
-  bubblein(){
-    let parentindex= 0
-    let element = this.value[0]
-    while(true)
-    {
-      
-      let length = this.value.length
-      let childindex1  = 2*parentindex + 1
-      let childindex2 = 2*parentindex + 2
-      let leftChild, rightChild
-      let swap = null
-      if (childindex1 < length){
-      leftChild = this.value[childindex1]
-      if(element < leftChild){
-        swap = childindex1
-      }
+  bubblein() {
+    let parentindex = 0;
+    let element = this.value[0];
+    while (true) {
+      let length = this.value.length;
+      let childindex1 = 2 * parentindex + 1;
+      let childindex2 = 2 * parentindex + 2;
+      let leftChild, rightChild;
+      let swap = null;
+      if (childindex1 < length) {
+        leftChild = this.value[childindex1];
+        if (element < leftChild) {
+          swap = childindex1;
+        }
       }
 
-    if (childindex2 < length){
-     rightChild = this.value[childindex2]
-      if((swap === null && element < rightChild)||
-        (swap !== null &&  rightChild > leftChild)){
-        swap = childindex2
+      if (childindex2 < length) {
+        rightChild = this.value[childindex2];
+        if (
+          (swap === null && element < rightChild) ||
+          (swap !== null && rightChild > leftChild)
+        ) {
+          swap = childindex2;
+        }
       }
-    }
-     
-      if(swap == null) break;
-       [this.value[parentindex],this.value[swap]]= 
-      [this.value[swap],this.value[parentindex]]
-      parentindex = swap
-      element = this.value[swap] 
-    
+
+      if (swap == null) break;
+      [this.value[parentindex], this.value[swap]] = [
+        this.value[swap],
+        this.value[parentindex],
+      ];
+      parentindex = swap;
+      element = this.value[swap];
     }
   }
 }
-list = new MaxBinHeap()
+list = new MaxBinHeap();
 // need to check this ExtractBinmax
 
 // Priority Queues: --------------------------------------------------
 
-class Node{
-  constructor(val,priority){
-    this.value = val
-    this.priority = priority
+class Node {
+  constructor(val, priority) {
+    this.value = val;
+    this.priority = priority;
   }
 }
- class PriorityQueue{
-   constructor(){
-     this.values =[]
-   }
-   insert(val, priority ){
-     let NewNode = new Node(val, priority) 
-     this.values.push(NewNode)
-     this.ToFindCorrectPlaceNode()
-   }
-   ToFindCorrectPlaceNode(){
-     let arr= this.values
-     let currentNodeIndex = arr.length -1
-      let currentNodevalue = arr[currentNodeIndex]
-     while(currentNodeIndex > 0){
-       let parentNodeIndex= Math.floor(currentNodeIndex -1/2)
-       let parentNodevalue = arr[parentNodeIndex]
-     
-        if(currentNodevalue.priority >= parentNodevalue.priority) break
-       [arr[currentNodeIndex],arr[parentNodeIndex]] = 
-       [arr[parentNodeIndex],arr[currentNodeIndex]]
-       currentNodeIndex = parentNodeIndex
-   }
-   }
-  ExtractMinBin(){
-  
-  // let length = this.value.length
-  let oldroot = this.values[0]
-  let lastNode  =  this.values.pop()
-  if (this.values.length > 0){
-   this.values[0] = lastNode
-  this.bubblein() 
+class PriorityQueue {
+  constructor() {
+    this.values = [];
   }
-  
-  return oldroot
-}
-  bubblein(){
-    let parentindex= 0
-    let element = this.values[0]
-    let length = this.values.length
-    while(true)
-    {
-      let childindex1 = 2*parentindex + 1
-      let childindex2 = 2*parentindex + 2
-      let leftChild, rightChild
-      let swap = null
-      if (childindex1 < length){
-      leftChild = this.values[childindex1]
-      if(element.priority > leftChild.priority){
-        swap = childindex1
-      }
+  insert(val, priority) {
+    let NewNode = new Node(val, priority);
+    this.values.push(NewNode);
+    this.ToFindCorrectPlaceNode();
+  }
+  ToFindCorrectPlaceNode() {
+    let arr = this.values;
+    let currentNodeIndex = arr.length - 1;
+    let currentNodevalue = arr[currentNodeIndex];
+    while (currentNodeIndex > 0) {
+      let parentNodeIndex = Math.floor(currentNodeIndex - 1 / 2);
+      let parentNodevalue = arr[parentNodeIndex];
+
+      if (currentNodevalue.priority >= parentNodevalue.priority) break;
+      [arr[currentNodeIndex], arr[parentNodeIndex]] = [
+        arr[parentNodeIndex],
+        arr[currentNodeIndex],
+      ];
+      currentNodeIndex = parentNodeIndex;
+    }
+  }
+  ExtractMinBin() {
+    // let length = this.value.length
+    let oldroot = this.values[0];
+    let lastNode = this.values.pop();
+    if (this.values.length > 0) {
+      this.values[0] = lastNode;
+      this.bubblein();
+    }
+
+    return oldroot;
+  }
+  bubblein() {
+    let parentindex = 0;
+    let element = this.values[0];
+    let length = this.values.length;
+    while (true) {
+      let childindex1 = 2 * parentindex + 1;
+      let childindex2 = 2 * parentindex + 2;
+      let leftChild, rightChild;
+      let swap = null;
+      if (childindex1 < length) {
+        leftChild = this.values[childindex1];
+        if (element.priority > leftChild.priority) {
+          swap = childindex1;
+        }
       }
 
-    if (childindex2 < length){
-     rightChild = this.values[childindex2]
-      if((swap === null && element.priority > rightChild.priority)||
-        (swap !== null && rightChild.priority < leftChild.priority)){
-        swap = childindex2
+      if (childindex2 < length) {
+        rightChild = this.values[childindex2];
+        if (
+          (swap === null && element.priority > rightChild.priority) ||
+          (swap !== null && rightChild.priority < leftChild.priority)
+        ) {
+          swap = childindex2;
+        }
       }
+      if (swap === null) break;
+      this.values[parentindex] = this.values[swap];
+      this.values[swap] = element;
+      parentindex = swap;
+      // element = this.values[swap]
     }
-     if(swap === null) break;
-      this.values[parentindex] = this.values[swap]
-      this.values[swap] = element
-      parentindex = swap
-      // element = this.values[swap] 
-    
-    }
-  }   
- }
- let heap = new PriorityQueue()
-heap.insert("feaver", 3)
-heap.insert("surgery",1)
-heap.insert("cough",4)
-heap.insert("fracture",2)
-heap.insert("headache",5)
-heap.insert("flue",6)
+  }
+}
+let heap = new PriorityQueue();
+heap.insert("feaver", 3);
+heap.insert("surgery", 1);
+heap.insert("cough", 4);
+heap.insert("fracture", 2);
+heap.insert("headache", 5);
+heap.insert("flue", 6);
 //  getting wrong answer for this need to check this one
-
-

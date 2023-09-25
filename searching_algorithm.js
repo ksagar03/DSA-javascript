@@ -10,7 +10,7 @@ We have some built in algorithm like indexof which uses for loop to search the i
 //     if (state[i] === value){
 //       return true
 //     }
-//   } 
+//   }
 // return false
 // }
 // let state =["Andhra Pradesh",
@@ -72,31 +72,29 @@ We have some built in algorithm like indexof which uses for loop to search the i
 // }
 // console.log(`${binarysearch([1, 3, 4, 5, 7, 10,14], 10)}`)
 
-
 //eg: string search - naive method
 const stringsearch = (str, str1) => {
-  let count = 0
+  let count = 0;
   for (let i = 0; i < str.length; i++) {
     for (let j = 0; j < str1.length; j++) {
       if (str[i + j] !== str1[j]) {
-        break
-      } // here i+j will help us iterate 1st string to match 2nd string, if the strings are not matching then it will break the inner loop and start from the first 
+        break;
+      } // here i+j will help us iterate 1st string to match 2nd string, if the strings are not matching then it will break the inner loop and start from the first
       if (j == str1.length - 1) {
-        count++
+        count++;
         // if j reaches to last string of str1 without breaking the innerloop then it will increment the count by one
       }
     }
   }
-  return count
+  return count;
+};
 
-}
-
-document.write(`number of string matches: ${stringsearch("hello llo", "ll")}`)
+document.write(`number of string matches: ${stringsearch("hello llo", "ll")}`);
 // above methods time complexity in O(m*n) where m and n are the length on two strings
 // to reduce the time complexity, KMP algorithm is used this algorithm will bring down the time complexity
 // O(N + M)
 // In naive method it is not analyzing the pattern which needs to be searched in the given string (simply it checking repitaively via for loop)
 // In KMP algorithm it will analyze the pattern which needs to be searched afterthat it will create an array called LPS(least preffix and suffix)
-// eg: "abbaaa" this is the pattern which needs to be searched then 
+// eg: "abbaaa" this is the pattern which needs to be searched then
 // abbaaa = [0,0,1,1,2,3]
-//  here first 0 tells us about "a" has came one time so at the start it will set to 0 then next "b" this also appears one time so it is set to 0, next "b" is repeating so it is set to 1 and so on..... 
+//  here first 0 tells us about "a" has came one time so at the start it will set to 0 then next "b" this also appears one time so it is set to 0, next "b" is repeating so it is set to 1 and so on.....

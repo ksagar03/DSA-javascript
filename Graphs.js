@@ -30,140 +30,132 @@ In Adjacency list each node connection's with other node will be stored in the a
 In aobe example we had numbers what if insted of numbers we had some strings so at that time we can use hash maps
 <h3>Time and space complexity b/n Adjacency matrix and Adjacency list</h3>
 <img class="image" src="images/Big O of Adj matrix and list.png" />
-`)
+`);
 
 // Building a uni-directed Graph
-class Graph{
-  constructor(){
-    this.adjlist = {}
+class Graph {
+  constructor() {
+    this.adjlist = {};
   }
-  addVertex(vertex){
-   if(!this.adjlist[vertex]) this.adjlist[vertex] = []
-    else return alert("this vertex already exsist please add another vertex")
+  addVertex(vertex) {
+    if (!this.adjlist[vertex]) this.adjlist[vertex] = [];
+    else return alert("this vertex already exsist please add another vertex");
     // if the vertex is already there then it will be rewitten so to avoid that if condition is written
   }
-  addEdge(v1,v2){
-    if(this.adjlist[v1] && this.adjlist[v2]){
-      this.adjlist[v1].push(v2)
-      this.adjlist[v2].push(v1)
-      return this.adjlist
-    }else{
-      return alert("vertex is not there in the list")
+  addEdge(v1, v2) {
+    if (this.adjlist[v1] && this.adjlist[v2]) {
+      this.adjlist[v1].push(v2);
+      this.adjlist[v2].push(v1);
+      return this.adjlist;
+    } else {
+      return alert("vertex is not there in the list");
     }
   }
 
-removeedges(v1,v2){
-   if(this.adjlist[v1] || this.adjlist[v2]){
-     this.adjlist[v1]  = this.adjlist[v1].filter( v => v !== v2)
-      this.adjlist[v2]  = this.adjlist[v2].filter( v => v !== v1)
-   }else{
-      return alert("vertex is not there in the list")
+  removeedges(v1, v2) {
+    if (this.adjlist[v1] || this.adjlist[v2]) {
+      this.adjlist[v1] = this.adjlist[v1].filter((v) => v !== v2);
+      this.adjlist[v2] = this.adjlist[v2].filter((v) => v !== v1);
+    } else {
+      return alert("vertex is not there in the list");
     }
-}
-removevertex(v1){
-  if(this.adjlist[v1]){
-     let vertex = this.adjlist[v1]
-    for(let i in vertex){
-      this.removeedges(v1,vertex[i])
-    }
-   delete this.adjlist[v1]
-  }else{
-      return alert("vertex is not--- there in the list")
-    }
-}
- 
-  DFS_recursive(vertex){
-    let isVisited = {}
-    let result =[]
-    let adjlist = this.adjlist
-    function DFS(vertex){
-    if(!vertex){
-      return null
-    }
-      isVisited[vertex] = true
-      result.push(vertex)
-       // this.adjlist[vertex]  this line will not work as this will be pointing twoards the attributes of current function(DFS)
-      adjlist[vertex].map(value => {
-        if(!isVisited[value]){
-         return  DFS(value)
-        }
-      })   
-  } 
-    DFS(vertex)
-    return result
-    
   }
-  DFS_itirative(vertex){
-    let stack = []
-    let isvisited = {}
-    let result = [] 
-    stack.push(vertex)
-    while (stack.length)
-    {
-      vertex = stack.pop()
-      if(!isvisited[vertex])
-      {
-        isvisited[vertex] = true
-        result.push(vertex)
-        this.adjlist[vertex].map(value => stack.push(value))
+  removevertex(v1) {
+    if (this.adjlist[v1]) {
+      let vertex = this.adjlist[v1];
+      for (let i in vertex) {
+        this.removeedges(v1, vertex[i]);
+      }
+      delete this.adjlist[v1];
+    } else {
+      return alert("vertex is not--- there in the list");
+    }
+  }
+
+  DFS_recursive(vertex) {
+    let isVisited = {};
+    let result = [];
+    let adjlist = this.adjlist;
+    function DFS(vertex) {
+      if (!vertex) {
+        return null;
+      }
+      isVisited[vertex] = true;
+      result.push(vertex);
+      // this.adjlist[vertex]  this line will not work as this will be pointing twoards the attributes of current function(DFS)
+      adjlist[vertex].map((value) => {
+        if (!isVisited[value]) {
+          return DFS(value);
+        }
+      });
+    }
+    DFS(vertex);
+    return result;
+  }
+  DFS_itirative(vertex) {
+    let stack = [];
+    let isvisited = {};
+    let result = [];
+    stack.push(vertex);
+    while (stack.length) {
+      vertex = stack.pop();
+      if (!isvisited[vertex]) {
+        isvisited[vertex] = true;
+        result.push(vertex);
+        this.adjlist[vertex].map((value) => stack.push(value));
       }
     }
-    return result
+    return result;
   }
-  BFS_iterative(vertex){
-    let queue =[]
-    let isvisited ={}
-    let result =[]
-    queue.push(vertex)
-    while(queue.length){
-      vertex = queue.shift()
-      if(!isvisited[vertex]){
-        isvisited[vertex] = true
-        result.push(vertex)
-        this.adjlist[vertex].map(value => queue.push(value))
+  BFS_iterative(vertex) {
+    let queue = [];
+    let isvisited = {};
+    let result = [];
+    queue.push(vertex);
+    while (queue.length) {
+      vertex = queue.shift();
+      if (!isvisited[vertex]) {
+        isvisited[vertex] = true;
+        result.push(vertex);
+        this.adjlist[vertex].map((value) => queue.push(value));
       }
-     // In the Above code all the values will added to queue so for smaller graph it is easy to store thos e things in queue but what if the graph is too huge
-      
+      // In the Above code all the values will added to queue so for smaller graph it is easy to store thos e things in queue but what if the graph is too huge
     }
-    return result
+    return result;
   }
-  BFS_improvedIterative(vertex){
-    let queue =[vertex]
-    let isvisited ={}
-    let result =[]
-  isvisited[vertex] = true
-    while(queue.length){
-      vertex = queue.shift()
-      result.push(vertex)
-      this.adjlist[vertex].map(value =>
-        {
-        if(!isvisited[value])
-        {
-        isvisited[value] = true
-         queue.push(value)
+  BFS_improvedIterative(vertex) {
+    let queue = [vertex];
+    let isvisited = {};
+    let result = [];
+    isvisited[vertex] = true;
+    while (queue.length) {
+      vertex = queue.shift();
+      result.push(vertex);
+      this.adjlist[vertex].map((value) => {
+        if (!isvisited[value]) {
+          isvisited[value] = true;
+          queue.push(value);
         }
-      })
+      });
       //  for this space complextity wil be less
     }
-    return result
+    return result;
   }
-  
 }
-let g = new Graph()
-g.addVertex("A")
-g.addVertex("B")
-g.addVertex("C")
-g.addVertex("D")
-g.addVertex("E")
-g.addVertex("F")
-g.addEdge("A","B")
-g.addEdge("A","C")
-g.addEdge("B","D")
-g.addEdge("C","E")
-g.addEdge("D","E")
-g.addEdge("D","F")
-g.addEdge("E","F")
-
+let g = new Graph();
+g.addVertex("A");
+g.addVertex("B");
+g.addVertex("C");
+g.addVertex("D");
+g.addVertex("E");
+g.addVertex("F");
+g.addEdge("A", "B");
+g.addEdge("A", "C");
+g.addEdge("B", "D");
+g.addEdge("C", "E");
+g.addEdge("D", "E");
+g.addEdge("D", "F");
+g.addEdge("E", "F");
 
 // ---------------------------------------------------------
 // Graph traversal---
@@ -181,6 +173,4 @@ Eg: take a vertex "0" which has following edges [1,6,2] so it will traverse this
 In DFS it will traverse to the next vertex one by one
 Eg: Lets take a vertex "0"(let us traverse increasing order) so it will start traversing from 0->1->5 after 5 there is no were to go so it will move back to 1 and traverse the other side so it will go like this 0->1->5->6->7->9->8->6 
 <li>Taking this below example to implement the DFS code</li>
-<img class="image" src="images/graph_DFS.png"/>`)
-
-
+<img class="image" src="images/graph_DFS.png"/>`);

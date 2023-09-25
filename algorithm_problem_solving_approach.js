@@ -32,7 +32,7 @@ Look Back and Refactor
   c. once you feel like this is it i cant modify it further, then check for other solutions for the problem understand there approach and campare it with your approach.
 */
 
-// --------------------------------------------------------------------------------------------- 
+// ---------------------------------------------------------------------------------------------
 // eg: Write a function which takes in a string and return counts of each character in the string. (assuming that I need to ignore the special char and space)
 
 // const ToGetCharCount = (stri) => {
@@ -40,7 +40,7 @@ Look Back and Refactor
 //   // need to a loop over a string
 //   // need to create an new object to store the results
 //   // if the key is there in the object then it should increment by one or if the key is not there in the object then create a new key and assign a value 1
-//   // 
+//   //
 //   let result = {};
 //   let str = stri.toLowerCase()
 //   console.log(str)
@@ -56,7 +56,6 @@ Look Back and Refactor
 // }
 // // let obj =ToGetCharCount("Sagar ")
 
-
 // // document.write(Object.entries(obj))
 // console.log(ToGetCharCount("Sagar"))
 // in this above written code it is considering spaces and special character
@@ -64,10 +63,10 @@ Look Back and Refactor
 // better approach
 const ToGetCharCount = (stri) => {
   let result = {};
-  let str = stri.toLowerCase()
+  let str = stri.toLowerCase();
   for (let char of str) {
     if (/[a-z0-9]/.test(char)) {
-      // /[a-z0-9]/ -- this called a regular expression 
+      // /[a-z0-9]/ -- this called a regular expression
       //  we can also use ASCII values instead of regular expression (it is faster than regular expression)
       //   if (result[char] > 0) {
       //   result[char]++
@@ -76,17 +75,12 @@ const ToGetCharCount = (stri) => {
       // }
       // this simple if else operator and replaced with conditional operator
       // result[char] >0 ? result[char]++ : result[char] = 1
-      // or 
-      result[char] = ++result[char] || 1
+      // or
+      result[char] = ++result[char] || 1;
       // this means if the charactor is present in the object then increment it by one or if it is a new character then assign it to value 1
-
     }
   }
   return result;
-}
+};
 
-console.log(ToGetCharCount("Hi this @ is 1 and 2 #"))
-
-
-
-
+console.log(ToGetCharCount("Hi this @ is 1 and 2 #"));

@@ -7,29 +7,29 @@
 //   3. Searching in Object is O(n) i.e linear
 
 let obj = {
-name: "sagar",
-male: true,
-favnumber: [1,2,3,4]
-}  
+  name: "sagar",
+  male: true,
+  favnumber: [1, 2, 3, 4],
+};
 
 //  Objects methods in javascript
 
 // 1. object.keys  -> O(N)
 
-document.write(`OBJECTS <br/>object.keys output :: ${Object.keys(obj)} <br/>`)
+document.write(`OBJECTS <br/>object.keys output :: ${Object.keys(obj)} <br/>`);
 //  here i have used <br/> because document.write will be rendered in the HTML page
 
 // 2. object.values -O(N)  --- returns values of the objetcs
 
-document.write(` Object.values output :: ${Object.values(obj)} <br/>`)
+document.write(` Object.values output :: ${Object.values(obj)} <br/>`);
 
-// 3. Object.entries  -> O(N) 
+// 3. Object.entries  -> O(N)
 
-document.write(` Object.entries output :: ${Object.entries(obj)} <br/>`)
+document.write(` Object.entries output :: ${Object.entries(obj)} <br/>`);
 
 // 4. Object.hasOwnProperty -> O(1) --- this methods will return whether the key which has been asked is present in the objects
 
-document.write(` Object.hasOwnProperty :: ${ obj.hasOwnProperty("male") } <br/>`)
+document.write(` Object.hasOwnProperty :: ${obj.hasOwnProperty("male")} <br/>`);
 
 // ARRAY---------------------------------------------------------
 //  arrays are ordered list of data.
@@ -38,7 +38,7 @@ document.write(` Object.hasOwnProperty :: ${ obj.hasOwnProperty("male") } <br/>`
 //       eg. ["A","B","C","D"]  -> index- [0,1,2,3]  if you are inserting data at the start then the index needs to be changed for all the data so at that time it will O(N) time to complete the task (same for inserting data in the middle)
 // 3. searching  -> Time complexity is O(N)
 
-//  built in Array methods 
+//  built in Array methods
 /*
 1. push -> O(1)
 2. pop -> O(1)
@@ -53,12 +53,8 @@ document.write(` Object.hasOwnProperty :: ${ obj.hasOwnProperty("male") } <br/>`
 */
 
 // concat example
-document.write("<br/>ARRAY <br/> concat example <br/>")
-let a1= [3,2,5,8]
-let a2=[9,7,1,0]
+document.write("<br/>ARRAY <br/> concat example <br/>");
+let a1 = [3, 2, 5, 8];
+let a2 = [9, 7, 1, 0];
 
-document.write(`concatination :: ${a1.concat(a2)} <br/>`)
-
-
-
-
+document.write(`concatination :: ${a1.concat(a2)} <br/>`);

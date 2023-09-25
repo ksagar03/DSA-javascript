@@ -37,23 +37,24 @@ this.lastname = lastname
 
 // instance methods
 
-class claculate_avg_marks{
-  constructor (marks){
-    
-    this.marks = []
+class claculate_avg_marks {
+  constructor(marks) {
+    this.marks = [];
   }
-  addmarks(marks){
-    this.marks.push(marks)
-    return this.marks 
+  addmarks(marks) {
+    this.marks.push(marks);
+    return this.marks;
   }
-  sum(marks){
-    let sum_of_marks = this.marks.reduce(function(a,b){ return a+b})
-    return sum_of_marks/this.marks.length
+  sum(marks) {
+    let sum_of_marks = this.marks.reduce(function (a, b) {
+      return a + b;
+    });
+    return sum_of_marks / this.marks.length;
   }
 }
 
-let s1marks = new claculate_avg_marks() 
-console.log(s1marks)
+let s1marks = new claculate_avg_marks();
+console.log(s1marks);
 
 // 2. statics methods: this methods can not be called using newly created objects. It should be called using a class name.
 class Point {
@@ -78,4 +79,4 @@ document.write(`when the method or a varible defined via static, it can not be c
 p1.displayName :${p1.displayName} <br/>
 if i call the same thing using a class name then it should return a value <br/>
 Point.displayName :${Point.displayName} <br/>
-same goes for methods which are difined via statics`)
+same goes for methods which are difined via statics`);

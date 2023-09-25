@@ -24,84 +24,77 @@ but for the worst case time complexity - were we have one sided BST Eg: <br/>
 <img class="image" src="images/Worst_case_BST.png" />
 <br/>
 here for searching the value 91 in BST we need go all the way to end so it will take O(n) time complexity.
-`)
+`);
 
-
-class Node{
-  constructor(val){
-    this.value = val
-    this.left =null
-    this.right = null
-    this.count = 0
+class Node {
+  constructor(val) {
+    this.value = val;
+    this.left = null;
+    this.right = null;
+    this.count = 0;
   }
 }
-class binarysearchtree{
-  constructor(){
-    this.root = null
+class binarysearchtree {
+  constructor() {
+    this.root = null;
   }
-  insert(val){
-    let newNode = new Node(val) 
-    if(!this.root){
-      this.root = newNode
-      return this
-    }else{
-      let current = this.root
-    while(true){
-// Here if we have a duplicate values then the while loop will run in infinite so to avoide that we can either 
-// 1.ignore the duplicate or 
-// 2. we can have a count which will have count of each node
-//  i will implement 2nd method
-      if (val === current.value){
-        current.count++
-        return this
-      }
-      if(val < current.value ){
-        if(current.left === null){
-          current.left = newNode
-          return this
+  insert(val) {
+    let newNode = new Node(val);
+    if (!this.root) {
+      this.root = newNode;
+      return this;
+    } else {
+      let current = this.root;
+      while (true) {
+        // Here if we have a duplicate values then the while loop will run in infinite so to avoide that we can either
+        // 1.ignore the duplicate or
+        // 2. we can have a count which will have count of each node
+        //  i will implement 2nd method
+        if (val === current.value) {
+          current.count++;
+          return this;
         }
-        else current = current.left
-     }
-      else if(val > current.value ){
-      if(current.right === null){
-        current.right = newNode
-        return this
-      }
-      else  current = current.right
-    }
-    }
-  }
-  }
-  find(val){
-    if(!this.root){
-      return "please insert value"
-    }
-      let isfound = false
-      let current = this.root
-      while(current && !isfound){
-        // if the value is not htere in the tree and we met end of the tree (i.e current === leaf node left or rigt value(which will be null) then i will break the loop ) 
-        if(val < current.value){
-          current = current.left
-          }
-        else if(val > current.value){
-          current = current.right
-        }
-        else {
-        isfound = true
-        return current
+        if (val < current.value) {
+          if (current.left === null) {
+            current.left = newNode;
+            return this;
+          } else current = current.left;
+        } else if (val > current.value) {
+          if (current.right === null) {
+            current.right = newNode;
+            return this;
+          } else current = current.right;
         }
       }
-    return "the value was not found"
+    }
+  }
+  find(val) {
+    if (!this.root) {
+      return "please insert value";
+    }
+    let isfound = false;
+    let current = this.root;
+    while (current && !isfound) {
+      // if the value is not htere in the tree and we met end of the tree (i.e current === leaf node left or rigt value(which will be null) then i will break the loop )
+      if (val < current.value) {
+        current = current.left;
+      } else if (val > current.value) {
+        current = current.right;
+      } else {
+        isfound = true;
+        return current;
+      }
+    }
+    return "the value was not found";
   }
 }
 
-let BST = new binarysearchtree()
+let BST = new binarysearchtree();
 // BST.root = new Node(100)
 // BST.root.left = new Node(70)
 // BST.root.right = new Node(110)
-BST.insert(100)
-BST.insert(150)
-BST.insert(20)
-BST.insert(50)
-BST.insert(200)
-
+BST.insert(100);
+BST.insert(150);
+BST.insert(20);
+BST.insert(50);
+BST.insert(200);

@@ -1,8 +1,7 @@
 //  Note: this  problem solving pattens will not help you in all the problems
 
-
 //  1. Frequency counter (O(N)) -- time complexity
-//  This Pattern helps us to avoid using nested loops (O(N^2)) so that time complexity can be reduced  
+//  This Pattern helps us to avoid using nested loops (O(N^2)) so that time complexity can be reduced
 //  This pattern uses objects or sets to collect values/frequency of values
 /*  Eg:
  Write a function called same, which accepts two arrays. The function should return true if every value in the array has it's corresponding value squared in the second array. The frequency of values must be the same
@@ -43,10 +42,10 @@
 //     fc1[val]= ++fc1[val] || 1
 //   }
 //   for (val of a2){
-//     fc2[val]= ++fc2[val] || 1 
+//     fc2[val]= ++fc2[val] || 1
 //   }
 //   console.log(fc1,fc2)
-//   for(let key in fc1){ 
+//   for(let key in fc1){
 //     if(!(key ** 2 in fc2)){
 //       // This if condition will check whether the  keys are matching in fc1 and fc2
 //       return false
@@ -59,7 +58,6 @@
 //   return true
 // }
 // document.write(same([1,4,2,3,2,4],[1,16,16,4,4,9]))
-
 
 // Example two  Anagrams
 /*Given two strings, write a function to determine if the second string is an anagram of the first. An anagram is a word, phrase, or name formed by rearranging the letters of another, such as cinema, formed from iceman */
@@ -80,7 +78,7 @@
 //   for(let key in fc1 ){
 //     if (!(key in fc2))
 //     {
-//       return false 
+//       return false
 //     }
 //     if (fc1[key] !== fc2[key])
 //       return false
@@ -103,7 +101,7 @@
 //   for (val of s12){
 //     if(!fc[val]){
 //       return false
-//       //  if the value is not present in the obj then it will return false 
+//       //  if the value is not present in the obj then it will return false
 //     }else{
 //       fc[val] -=1
 //       // if the value is present in the obj then it will reduce that respective key's value by one
@@ -114,8 +112,6 @@
 // }
 
 // document.write(`The given string is ${secondwayanagram("aaz","zza")? "anagram" : "not anagram" }`)
-
-
 
 /* 2.  Multiple pointers pattern
 There will be senario where a value needs to be searched in array or strings.... so we use pointers or values that correspond to an index or position and move towards the beginning, end or middle based on a certain condition
@@ -188,12 +184,10 @@ Write a function called sumZero which accepts a sorted array of integers. The fu
 //     }
 //     console.log(arr)
 //   }
-// // we can also perform this using for loop 
+// // we can also perform this using for loop
 //   return left+1
 // }
 // document.write(`No of unique values ${countUniqueValues([0,0, 1, 1, 1, 1, 2, 2, 3,3,5,13])}`)
-
-
 
 /*3. Sliding window 
 this algorithm is useful when a subset needs to be searched with in the array. In this we create a window which contains either array or a number and this windo can increase or decrease based on the condition.
@@ -209,7 +203,7 @@ The function should calculate the maximum sum of n consecutive elements in the a
 //   for(let i= 0 ;i<arr.length - n +1;i++){
 //     sum=0;
 //     for(let j=0;j<n;j++)
-//       // here j can't be equal to i as, i increases the j<n condition will not satisfy and break the loop 
+//       // here j can't be equal to i as, i increases the j<n condition will not satisfy and break the loop
 //       {
 //         sum+=arr[i+j]
 //       }
@@ -250,19 +244,19 @@ This pattern involves dividing a data set into smaller chunks and then repeating
 // example: brinary search
 
 const binarysearch = (arr, value) => {
-  let first = 0
-  let last = arr.length - 1
+  let first = 0;
+  let last = arr.length - 1;
   while (first <= last) {
     mid = Math.floor((last + first) / 2);
     if (arr[mid] > value) {
-      last = mid - 1
+      last = mid - 1;
     } else if (arr[mid] < value) {
-      first = mid + 1
+      first = mid + 1;
     } else {
-      return mid
+      return mid;
     }
-    return -1
+    return -1;
   }
-}
+};
 
-console.log(binarysearch([1, 2, 3, 4, 5], 3))
+console.log(binarysearch([1, 2, 3, 4, 5], 3));
