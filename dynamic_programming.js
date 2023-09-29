@@ -29,7 +29,13 @@ We can also observe that fib(4), fib(3) is repeating it self and added to call s
 <h4>So this can be solved using dynamic programing were the values of fib(4) and fib(3) will be stored in the memory and can be used it when ever it is required</h4>
 <img class="image" src="images/fib_using_DP.PNG"/>
 here the memo[0] will be undefined and memo[1], memo[2] will be returned from a base case, <br/>
-We can also predefine those values in the memo array and can remove the base case i.e memo[undefined, 1,1]`)
+We can also predefine those values in the memo array and can remove the base case i.e memo[undefined, 1,1]
+<br/>
+So the Time complexity is <b>O(N)</b>
+<br/>
+There is one more point to be noted while using recursion, when the number is huge eg: fib(10000) which will be having so many call backs and will lead to stack overflow(i.e Range error)
+<br/>
+There is one more way to find fib, using tabulation where we will use forloop and calculate the fib(n) `)
 
 
 // Normal recuresive function on fibonacci series
@@ -39,8 +45,8 @@ const fib_r = (n) => {
   return fib_r(n-1) + fib_r(n-2)
 }
 
-console.log(fib_r(10))
-
+// console.log(fib_r(10))
+// DP on fibonacci series (memoization)
 const dp_fib =(n, memo=[]) =>{
   if(memo[n] !== undefined )  return memo[n]
   if(n<=2) return 1
@@ -48,3 +54,17 @@ const dp_fib =(n, memo=[]) =>{
   memo[n] = result
   return result
 }
+
+// DP on fibonacci series (tabulation)
+const dp_fib_tab = (n) =>{
+  if(n<=2)
+  {
+    return 1
+  }
+    fibdata = [0,1,1]
+    for(let i=3; i<=n;i++){
+      fibdata[i] = fibdata[i-1] + fibdata[i-2]
+    }
+    return fibdata[n]
+}
+
