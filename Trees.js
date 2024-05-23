@@ -74,14 +74,13 @@ class binarysearchtree {
     }
     let isfound = false;
     let current = this.root;
-    while (current && !isfound) {
+    while (current) {
       // if the value is not htere in the tree and we met end of the tree (i.e current === leaf node left or rigt value(which will be null) then i will break the loop )
       if (val < current.value) {
         current = current.left;
       } else if (val > current.value) {
         current = current.right;
       } else {
-        isfound = true;
         return current;
       }
     }

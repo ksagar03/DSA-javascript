@@ -14,7 +14,7 @@ There are some built in sorting methods in javascripts:
 sort -> this method is used to sort the given data
 a= [10,203,43,2,1] 
 if we write a.sort() -> it wont provide correct answer
-In This first given data is converted into srtring then it takes the unique key of that string and then it starts sorting using those unique key
+In This, first given data is converted into srtring then it takes the unique key of that string and then it starts sorting using those unique key
 this method works well with strings sorting but when it comes to number it does not work
 */
 
@@ -65,6 +65,7 @@ const bubbleSortopt = (arr) => {
   // if we have almost sorted array then we can add one more condition to minimize the iteration
   let noswaping = 1;
   for (let i = arr.length; i > 0; i--) {
+    noswaping = 1;
     for (let j = 0; j < i - 1; j++) {
       if (arr[j] > arr[j + 1]) {
         [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
@@ -85,7 +86,7 @@ document.write(
 
 // 2. selection sort -- It is similar to bubble sort but instated of placing large element at the last, it will find the smallest element and replace it at the start.
 document.write(
-  "------------Selection sort------------------ <br/> Time complexity = O(N^2)  and this algorithm is slowest of all the three algorithm br/>"
+  "------------Selection sort------------------ <br/> Time complexity = O(N^2)  and this algorithm is slowest of all the three algorithm <br/>"
 );
 
 const SelectionSort = (arr) => {
@@ -116,11 +117,11 @@ const insertion_sort = (arr) => {
   for (let i = 1; i < arr.length; i++) {
     let currentValue = arr[i];
     for (var j = i - 1; j >= 0 && arr[j] > currentValue; j--) {
-      // here if i compare a[j] with a[i] it wont work becuause in the nested loop a[i] will be changing therefore I have assigned the value a[i] to currentValue
-      arr[j + 1] = arr[j];
+      // here if i compare a[j] with a[i] it wont work because in the nested loop a[i] will be changing therefore I have assigned the value a[i] to currentValue
+      arr[j + 1] = arr[j]; 
     }
     arr[j + 1] = currentValue;
-    document.write(`[${arr}] <br/>`);
+    document.write(`Insertion Sort  --> [${arr}] <br/>`);
   }
 
   return arr;

@@ -74,8 +74,10 @@ class tree {
         queue.push(currentNode.right);
         rightH++;
       }
+      console.log(queue)
     }
-    console.log(Math.max(leftH, rightH));
+    // console.log(leftH, rightH)
+    // console.log(Math.max(leftH, rightH));
     return result;
   }
   DFS_pre_order() {

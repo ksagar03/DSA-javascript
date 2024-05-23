@@ -26,7 +26,7 @@ But in Priority queue if we follow the same method then time complexity will be 
 
 class MaxBinHeap {
   constructor() {
-    this.value = [41, 39, 33, 18, 27, 12];
+    this.value = [null,41, 39, 33, 18, 27, 12];
   }
 
   insert(val) {
@@ -37,7 +37,7 @@ class MaxBinHeap {
   ToFindCorrectPlace() {
     let arr = this.value;
     let currentIndex = this.value.length - 1;
-    let parentIndex = Math.floor(currentIndex - 1 / 2);
+    let parentIndex = Math.floor(currentIndex  / 2);
     while (arr[currentIndex] > arr[parentIndex] && currentIndex > 0) {
       [arr[currentIndex], arr[parentIndex]] = [
         arr[parentIndex],
@@ -90,7 +90,7 @@ class MaxBinHeap {
       this.value[0] = lastNode;
       this.bubblein();
     }
-
+ 
     return oldroot;
   }
   bubblein() {
@@ -154,7 +154,7 @@ class PriorityQueue {
     let currentNodeIndex = arr.length - 1;
     let currentNodevalue = arr[currentNodeIndex];
     while (currentNodeIndex > 0) {
-      let parentNodeIndex = Math.floor(currentNodeIndex - 1 / 2);
+      let parentNodeIndex = Math.floor(currentNodeIndex / 2);
       let parentNodevalue = arr[parentNodeIndex];
 
       if (currentNodevalue.priority >= parentNodevalue.priority) break;

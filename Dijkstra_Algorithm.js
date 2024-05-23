@@ -20,7 +20,7 @@ class NaivePriorityQueue {
   // sort(){
   //   this.queue.sort((a,b) => a.priority - b.priority)
   // }
-} // But the time complexity of above priority queue is O(N log N) which is b
+} // But the time complexity of above priority queue is O(N log N) which is bad
 
 class WeightedGraph {
   constructor() {

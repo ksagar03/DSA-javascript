@@ -144,6 +144,7 @@ given array :[1556, 4, 3556, 593, 408, 4386, 902, 7, 8157, 86, 9637, 29] <br/>`)
 // 1st helper function
 const getdigit = (num, place) => {
   return Math.floor(Math.abs(num) / Math.pow(10, place)) % 10;
+  // eg: (1556, 0 )  -> math.floor(1556/1) % 10 => 6
 };
 // here Math.abs will convert -ve numbers into positive
 
@@ -155,17 +156,19 @@ const digitcount = (num) => {
     // this if condition is used because we are using log to count the digit log10(0) is infinity
   }
   return Math.floor(Math.log10(Math.abs(num))) + 1;
+  //  eg: log10(987263)  = math.floor(5.994) = 5 +1 = 6
 };
 // console.log(digitcount(3429))
 
 // 3rd helper function to find maxdigitcount of a number in the given list of the number
 
 const maxdigitcount = (numarr) => {
-  let maxdigit = 0;
-  for (let i of numarr) {
-    maxdigit = Math.max(maxdigit, digitcount(i));
-  }
-  return maxdigit;
+  
+  // for (let i of numarr) {
+  //   maxdigit = Math.max(maxdigit, digitcount(i));
+  // } 
+  // insted of finding digitcount for each number 
+  return  maxdigit = digitcount(Math.max(... numarr))
 };
 // console.log(maxdigitcount([902, 593, 4, 155]))
 
@@ -190,3 +193,37 @@ console.log(
 
 document.write(`Time complexity of radix sort: <br/>
 here "k" represents the maxdigitcount of a number in the given list of the number <br/> <img class="image" src="images/Radix_sort_time_complexity.PNG"> `);
+
+//  Counting sort
+
+/*
+Counting sort is a sorting algorithm that works by dividing the input into a number of buckets, similar to radix sort, but instead of using characters, it uses numbers. Counting sort is a comparison sort, meaning that it is not adaptive and is not a comparison sort. Counting sort is also stable, meaning that the order of equal elements does not change.
+*/
+
+const countingSort = (array) =>{
+  //  first to find max of the array
+  const max= Math.max(...array)
+  console.log(max)
+  let a1= new Array(max).fill(0)
+  let oparray = new Array(array.length)
+  for( let arr of array){
+    if(a1[arr]){
+      a1[arr]++
+    }else a1[arr] =1
+  }
+ console.log(a1)
+  for (let i=1 ; i<a1.length ; i++){
+    a1[i] = a1[i-1] + a1[i]
+  }
+  // console.log(a1)
+  for (let j= 0 ; j<array.length ;j++){
+    console.log(a1[array[j]])
+    if(oparray[a1[array[j]]-1] == array[j]){
+      oparray[a1[array[j]]-2] = array[j]
+     }
+    oparray[a1[array[j]]-1] =array[j]
+  }
+  console.log(oparray)
+}
+
+countingSort([56,-3,6,20,19,56,6])

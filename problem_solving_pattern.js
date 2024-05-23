@@ -45,7 +45,7 @@
 //     fc2[val]= ++fc2[val] || 1
 //   }
 //   console.log(fc1,fc2)
-//   for(let key in fc1){
+//   for(key in fc1){
 //     if(!(key ** 2 in fc2)){
 //       // This if condition will check whether the  keys are matching in fc1 and fc2
 //       return false
@@ -62,22 +62,21 @@
 // Example two  Anagrams
 /*Given two strings, write a function to determine if the second string is an anagram of the first. An anagram is a word, phrase, or name formed by rearranging the letters of another, such as cinema, formed from iceman */
 
-// const anagram = (s1,s2) => {
-// if(s1.length != s2.length){
-//   return false
-// }
-//   let fc1= {}
-//   let fc2= {}
-// for (val of s1){
-//     fc1[val]= ++fc1[val] || 1
+// const anagram = (s1, s2) => {
+//   if (s1.length != s2.length) {
+//     return false
 //   }
-//   for (val of s2){
-//     fc2[val]= ++fc2[val] || 1
+//   let fc1 = {}
+//   let fc2 = {} // here I'm creating two different objects which is not nescasary
+//   for (val of s1) {
+//     fc1[val] = ++fc1[val] || 1
+//   }
+//   for (val of s2) {
+//     fc2[val] = ++fc2[val] || 1
 //   }
 
-//   for(let key in fc1 ){
-//     if (!(key in fc2))
-//     {
+//   for (let key in fc1) {
+//     if (!(key in fc2)) {
 //       return false
 //     }
 //     if (fc1[key] !== fc2[key])
@@ -85,8 +84,8 @@
 //   }
 //   return true
 // }
-// document.write(`The given string is ${anagram("aaz","zza")? "anagram" : "not anagram" }`)
-// console.log(anagram("sagar","sgyar"))
+// document.write(`The given string is ${anagram("aaz", "zza") ? "anagram" : "not anagram"}`)
+// console.log(anagram("sagar", "sgyar"))
 // 2nd way
 
 // const secondwayanagram = (s11,s12) =>{
@@ -141,60 +140,64 @@ Write a function called sumZero which accepts a sorted array of integers. The fu
 // // console.log(sumzero([-3,-2,-1,0,1,2]))
 // document.write(sumzero([-3,-2,-1,0,1,2,3]))
 
-// Above code has time complexity of O(N^2) to overcome this we will be using multiple pointers
+// Above code has time complexity of O(N^2) to overcome this i will be using multiple pointers
 //  multiple pointer  -> O(N)
-// const sumzeropointers = (a1) => {
-//   // let z = []
-//   // let position = []
-//   let left = 0
-//   let right = a1.length - 1
-//   while (left < right) {
-//     let sum = a1[left] + a1[right]
+const sumzeropointers = (a1) => {
+  let z = []
+  let position = []
+  let left = 0
+  let right = a1.length - 1
+  while (left < right) {
+    let sum = a1[left] + a1[right]
 
-//     if (sum === 0) {
-//       // z.push(a1[left], a1[right])
-//       // position.push(left, right)
-//       return [a1[left], a1[right], [left, right]]
-//     } else if (sum < 0) {
-//       left++
-//     } else {
-//       right--
-//     }
-//   }
-// }
+    if (sum === 0) {
+      z.push(a1[left], a1[right])
+      position.push(left, right)
+      // return [a1[left], a1[right], [left, right]]
+      left++
+      right--
+    } else if (sum < 0) {
+      left++
+    } else {
+      right--
+    }
+  }
+  return [z, position]
+}
 
-// console.log(sumzeropointers([-3, -2, -1, 0, 1, 2]))
+console.log(sumzeropointers([-3, -2, -1, 0, 1, 2]))
 
 // problem 2:
 // implement a function called countUniqueValues, which accepts a sorted array, and counts the unique values in the array. There can be negative numbers in the array, but it will always be sorted
 
-// const countUniqueValues = (arr) => {
-//   if (arr.length === 0){
-//     return
-//   }
-//   let left = 0
-//   let right = 1
-//   while (right <= arr.length - 1) {
-//     if (arr[left] == arr[right]) {
-//       right++
-//     } else {
-//       unique++
-//       left++
-//       arr[left] = arr[right]
-//     }
-//     console.log(arr)
-//   }
-// // we can also perform this using for loop
-//   return left+1
-// }
-// document.write(`No of unique values ${countUniqueValues([0,0, 1, 1, 1, 1, 2, 2, 3,3,5,13])}`)
+const countUniqueValues = (arr) => {
+  if (arr.length === 0) {
+    return
+  }
+  let left = 0
+  let right = 1
+  let unique = 0
+  while (right <= arr.length - 1) {
+    if (arr[left] == arr[right]) {
+      right++
+    } else {
+      unique++
+      // left++
+      left = right
+    }
+    console.log(arr)
+  }
+  // we can also perform this using for loop
+  return unique
+}
+document.write(`No of unique values ${countUniqueValues([0, 0, 1, 1, 1, 1, 2, 2, 3, 3, 5, 13, 19, 19])}`)
 
-/*3. Sliding window 
-this algorithm is useful when a subset needs to be searched with in the array. In this we create a window which contains either array or a number and this windo can increase or decrease based on the condition.
-This window slides over a array or srting to find desired result.
+/*3. Sliding window
+this algorithm is useful when a subset needs to be searched with in the array. In this we create a window which contains either array or a number and this window can increase or decrease based on the condition.
+This window slides over a array or string to find desired result.
 */
 /* example:
-Write a function called maxSubarraySum which accepts an array of integers and a number called n. 
+Write a function called maxSubarraySum which accepts an array of integers and a number called n.
 The function should calculate the maximum sum of n consecutive elements in the array.
 */
 // naive solution:
@@ -241,22 +244,22 @@ this is a really importent algorithm it is used in various plases
 This pattern involves dividing a data set into smaller chunks and then repeating a process with a subset of data
 
 */
-// example: brinary search
+// example: binary search
 
-const binarysearch = (arr, value) => {
-  let first = 0;
-  let last = arr.length - 1;
-  while (first <= last) {
-    mid = Math.floor((last + first) / 2);
-    if (arr[mid] > value) {
-      last = mid - 1;
-    } else if (arr[mid] < value) {
-      first = mid + 1;
-    } else {
-      return mid;
-    }
-    return -1;
-  }
-};
+// const binarysearch = (arr, value) => {
+//   let first = 0;
+//   let last = arr.length - 1;
+//   while (first <= last) {
+//     mid = Math.floor((last + first) / 2);
+//     if (arr[mid] > value) {
+//       last = mid - 1;
+//     } else if (arr[mid] < value) {
+//       first = mid + 1;
+//     } else {
+//       return mid;
+//     }
+//     return -1;
+//   }
+// };
 
-console.log(binarysearch([1, 2, 3, 4, 5], 3));
+// console.log(binarysearch([1, 2, 3, 4, 5], 2));
