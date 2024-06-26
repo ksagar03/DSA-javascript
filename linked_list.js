@@ -89,9 +89,10 @@ class SinglyLinkedList {
     return oldhead;
   }
   unshift(val) {
+    // to add the element at the start
     var newheadnode = new Node(val);
     if (this.head == null && this.tail == null) {
-      this.head = newNode;
+      this.head = newheadnode;
       this.tail = this.head;
     } else {
       var currenthead = this.head;
@@ -185,6 +186,7 @@ class SinglyLinkedList {
     }
     return this;
   }
+// this method is only possible when head and tail is given also we need to know the length of the array
 }
 
 // var first = new Node("1")

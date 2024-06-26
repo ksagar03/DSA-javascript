@@ -1,11 +1,16 @@
 // Here i will be working on intermediate and fatser sorting algorithm
 // 1. merge sort
-//  2. quick sort
-//  3. radix sort
+// 2. quick sort
+// 3. radix sort
+// 4. counting sort 
 // ------------------------------------------------------------------------
 /*1. Merge sort
 it is a combination of two things - merging and sorting
-In this the array is decomposing or distructured into smaller array till 0 or 1 (i.e it will split the array into smaller part until the size of the array is 1  ) after splitting, it starts sorting the array and merges it*/
+In this the array is decomposing or distructured into smaller array till 0 or 1 (i.e it will split the array into smaller part until the size of the array is 1  ) after splitting, it starts sorting the array and merges it
+Time complexity = O(n log n)
+space complexity = O(n)  --> it is more for the merge sort as it splits the array into two for each recurrsion
+*/
+
 const merging = (arr1, arr2) => {
   let newarr = [];
   // let l1 = arr1.length
@@ -180,7 +185,7 @@ const Radixsort = (num) => {
       let getdigits = getdigit(num[j], i);
       digitbuckets[getdigits].push(num[j]);
     }
-    // console.log(digitbuckets)
+    console.log(digitbuckets)
     num = [].concat(...digitbuckets);
     document.write(`[${num}] <br/>`);
   }
@@ -213,9 +218,9 @@ const countingSort = (array) =>{
   }
  console.log(a1)
   for (let i=1 ; i<a1.length ; i++){
-    a1[i] = a1[i-1] + a1[i]
+    a1[i] += a1[i-1]
   }
-  // console.log(a1)
+  console.log(a1)
   for (let j= 0 ; j<array.length ;j++){
     console.log(a1[array[j]])
     if(oparray[a1[array[j]]-1] == array[j]){

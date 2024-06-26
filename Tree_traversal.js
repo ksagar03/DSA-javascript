@@ -57,11 +57,11 @@ class tree {
   }
   //  implementing BFS
   BFS() {
-    let currentNode = this.root,
-      queue = [],
-      result = [];
-    let leftH = 0,
-      rightH = 0;
+    let currentNode = this.root
+    let queue = []
+    let result = []
+    let leftH = 0
+    let rightH = 0
     queue.push(this.root);
     while (queue.length) {
       currentNode = queue.shift();
@@ -76,9 +76,9 @@ class tree {
       }
       console.log(queue)
     }
-    // console.log(leftH, rightH)
-    // console.log(Math.max(leftH, rightH));
-    return result;
+    console.log(leftH, rightH)
+    console.log(Math.max(leftH, rightH));
+    return [result, Math.max(leftH,rightH)];
   }
   DFS_pre_order() {
     let data = [];

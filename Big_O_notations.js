@@ -16,12 +16,12 @@ let obj = {
 
 // 1. object.keys  -> O(N)
 
-document.write(`OBJECTS <br/>object.keys output :: ${Object.keys(obj)} <br/>`);
+document.write(`OBJECTS <br/>object.keys output : : ${Object.keys(obj)} <br/>`);
 //  here i have used <br/> because document.write will be rendered in the HTML page
 
 // 2. object.values -O(N)  --- returns values of the objetcs
 
-document.write(` Object.values output :: ${Object.values(obj)} <br/>`);
+document.write(` Object.values output : : ${Object.values(obj)} <br/>`);
 
 // 3. Object.entries  -> O(N)
 

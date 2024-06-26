@@ -177,21 +177,36 @@ const countUniqueValues = (arr) => {
   let left = 0
   let right = 1
   let unique = 0
-  while (right <= arr.length - 1) {
+  while (right < arr.length) {
     if (arr[left] == arr[right]) {
       right++
     } else {
       unique++
       // left++
       left = right
+      right++
     }
     console.log(arr)
   }
   // we can also perform this using for loop
   return unique
 }
-document.write(`No of unique values ${countUniqueValues([0, 0, 1, 1, 1, 1, 2, 2, 3, 3, 5, 13, 19, 19])}`)
+document.write(`No of unique values ${countUniqueValues([0, 0, 1, 1, 1, 1, 2, 2, 3, 3, 5, 13, 19, 19,20])} <br/>`)
 
+
+const countUniquevalues_hash =  (arr) => {
+  if( arr.length == 0){
+    return 0
+  }
+  let fc =  new Map()
+  for( let i of arr){
+    fc.has(i) ? fc.set(i, true) : fc.set(i, 1)
+  }
+  return fc.size
+
+}
+
+document.write(`No of unique values using MAP function ${countUniquevalues_hash([0, 0, 1, 1, 1, 1, 2, 2, 3, 3, 5, 13, 19, 19,20])}`)
 /*3. Sliding window
 this algorithm is useful when a subset needs to be searched with in the array. In this we create a window which contains either array or a number and this window can increase or decrease based on the condition.
 This window slides over a array or string to find desired result.
@@ -240,26 +255,27 @@ The function should calculate the maximum sum of n consecutive elements in the a
 // document.write("using sliding window algoritm <br/>")
 // document.write(`max subarray sum of an array using sliding window algorithm = ${maxSubarraySumSW([1,2,3,4,5,6],3)}  `)
 /* 3. divide and conquer method:
-this is a really importent algorithm it is used in various plases
+this is a really importent algorithm it is used in various places
 This pattern involves dividing a data set into smaller chunks and then repeating a process with a subset of data
 
 */
 // example: binary search
 
-// const binarysearch = (arr, value) => {
-//   let first = 0;
-//   let last = arr.length - 1;
-//   while (first <= last) {
-//     mid = Math.floor((last + first) / 2);
-//     if (arr[mid] > value) {
-//       last = mid - 1;
-//     } else if (arr[mid] < value) {
-//       first = mid + 1;
-//     } else {
-//       return mid;
-//     }
-//     return -1;
-//   }
-// };
+const binarysearch = (arr, value) => {
+  let first = 0;
+  let last = arr.length - 1;
+  while (first <= last) {
+    mid = Math.floor((last + first) / 2);
+    if (arr[mid] > value) {
+      last = mid - 1;
+    } else if (arr[mid] < value) {
+      first = mid + 1;
+    } else {
+      return mid;
+    }
 
-// console.log(binarysearch([1, 2, 3, 4, 5], 2));
+  }
+  return -1;
+};
+
+console.log(binarysearch([1, 2, 3, 4, 5], 5));

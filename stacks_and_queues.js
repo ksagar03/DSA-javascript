@@ -20,7 +20,8 @@ there are various way to implement stacks: <br/>
 
 class Node {
   constructor(val) {
-    (this.value = val), (this.next = null);
+    this.value = val,
+      this.next = null
   }
 }
 class stack {
