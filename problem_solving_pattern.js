@@ -28,7 +28,7 @@
 
 // document.write(` naive approach: ${same([1, 2, 4], [1, 16, 4])}`)
 
-// above code will take O(N^2)(as it uses nestedfor loop (1. normal for loop and 2nd is indexof)) time complexity so avoide this we can use frequency counter
+// above code will take O(N^2)(as it uses nestedfor loop (1. normal for loop and 2nd is indexof)) time complexity so avoid this we can use frequency counter
 
 // frequency counter
 

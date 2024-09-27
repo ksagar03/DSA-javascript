@@ -14,7 +14,7 @@ There are some built in sorting methods in javascripts:
 sort -> this method is used to sort the given data
 a= [10,203,43,2,1] 
 if we write a.sort() -> it wont provide correct answer
-In This, first given data is converted into srtring then it takes the unique key of that string and then it starts sorting using those unique key
+In This, first given data is converted into string then it takes the unique key of that string and then it starts sorting using those unique key
 this method works well with strings sorting but when it comes to number it does not work
 */
 
@@ -48,7 +48,7 @@ document.write(
 document.write("--------Bubble sort-------------- <br/>");
 const bubbleSort = (arr) => {
   for (let j = 0; j < arr.length; j++) {
-    for (let i = 0; i < arr.length; i++) {
+    for (let i = 0 ; i < arr.length; i++) {
       if (arr[i] > arr[i + 1]) {
         temp = arr[i];
         arr[i] = arr[i + 1];

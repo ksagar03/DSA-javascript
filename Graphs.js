@@ -27,7 +27,7 @@ A matrix is a two dimensional reprasentation
 and it is reprasented in nested array
 <img class="image" src="images/adjacency_list.png"/>
 In Adjacency list each node connection's with other node will be stored in the array eg: take a node "3" which has two connection one at 2 and other at 4 so it will be reprasented as a [[2,4]] <br/>
-In aobe example we had numbers what if insted of numbers we had some strings so at that time we can use hash maps
+In above example we had numbers what if insted of numbers we had some strings so at that time we can use hash maps
 <h3>Time and space complexity b/n Adjacency matrix and Adjacency list</h3>
 <img class="image" src="images/Big O of Adj matrix and list.png" />
 `);

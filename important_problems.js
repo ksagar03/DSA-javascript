@@ -202,3 +202,58 @@ const missing_number = (array) =>{
 }
 
 document.write(` <br/> missing number in the array:[9,6,4,2,3,5,7,0,1] is ${missing_number([9,6,4,2,3,5,7,0,1])}`)
+
+
+/* Search in Rotated Sorted Array   
+Given a Sorted array which might be rotated multiple times and target which needs to be searched in the array
+given: 
+1.rotated sorted array
+eg: [0,1,2,3,4,5,6]  -->  [4,5,6,0,1,2,3]
+2. target -> to check whether it is there in the  array
+
+Note: Time complexity should be O(log n)
+
+
+*/
+
+//  Naive Approach
+const searchNaiveApproach = (array, target) => {
+    for ( let i of array){
+        if (i == target){
+            return true
+        }
+    }
+    return false
+    
+}
+ console.log(searchNaiveApproach([4,5,6,0,1,2,3], 6))
+//  This above solution will take O(N) time complexity
+
+//  so to reduce the time complexity we can use binary search
+
+const BinarySearchApproach = (arr, target ) => {
+    let end = arr.length -1 
+    let start = 0
+    while(start <= end){
+    let mid = Math.floor((start + end)/2)
+    if( arr[mid] == target){
+        return mid
+    }
+        if(arr[end] <= arr[mid]){
+            if(arr[start] <= target && arr[mid] > target ){
+
+                end = mid -1
+
+            } else start = mid+1
+            
+        }else{
+            if( arr[end] >= target && arr[mid] < target){
+            start = mid +1
+            
+        }else end = mid -1
+    
+}
+}
+    return -1
+}
+console.log(BinarySearchApproach([4,5,6,0,1,2,3], 2))

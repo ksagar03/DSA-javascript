@@ -15,7 +15,7 @@ class NaivePriorityQueue {
     this.queue.sort((a, b) => a.priority - b.priority);
   }
   dqueue() {
-   return this.queue.shift();
+    return this.queue.shift();
   }
   // sort(){
   //   this.queue.sort((a,b) => a.priority - b.priority)
@@ -46,48 +46,45 @@ class WeightedGraph {
       if (i === startV) {
         calcDist[i] = 0;
         priorityVertex.enqueue(i, 0);
-      // the starting vertex provided by a user should be assigned with priority 0 and the distance will will also be zero  
+        // the starting vertex provided by a user should be assigned with priority 0 and the distance will will also be zero  
       } else {
         calcDist[i] = Infinity;
         priorityVertex.enqueue(i, Infinity);
       }
       previous[i] = null;
     }
-     // initial state created
-  while (priorityVertex.queue.length){
-    smallest = priorityVertex.dqueue().val
-    // dqueue().val has been written because dqueue() function will return the the vertex value and priority but we need only vertex value
-    if(smallest == endV ){
-      
-      // console.log(calcDist)
-      // console.log(previous)
-      // need to build array that will return at the end
-      while( previous[smallest]){
-        efficientPath.push(smallest)
-        smallest = previous[smallest]
-      }
-      break;  
-    }
-    if (smallest || calcDist[smallest] !== Infinity)
-    {
-      for(let neighbour in this.adjList[smallest])
-      {
-        let neighbourNode = this.adjList[smallest][neighbour]
-        // console.log(neighbourNode)
-        let candidate = calcDist[smallest] + neighbourNode.weight
-        // console.log(candidate)
-        if(candidate < calcDist[neighbourNode.vertex])
-        {
-           calcDist[neighbourNode.vertex] = candidate
-           previous[neighbourNode.vertex] = smallest
-           priorityVertex.enqueue(neighbourNode.vertex, candidate)
+    // initial state created
+    while (priorityVertex.queue.length) {
+      smallest = priorityVertex.dqueue().val
+      // dqueue().val has been written because dqueue() function will return the the vertex value and priority but we need only vertex value
+      if (smallest == endV) {
+
+        // console.log(calcDist)
+        // console.log(previous)
+        // need to build array that will return at the end
+        while (previous[smallest]) {
+          efficientPath.push(smallest)
+          smallest = previous[smallest]
         }
+        break;
       }
-      
+      if (smallest || calcDist[smallest] !== Infinity) {
+        for (let neighbour in this.adjList[smallest]) {
+          let neighbourNode = this.adjList[smallest][neighbour]
+          // console.log(neighbourNode)
+          let candidate = calcDist[smallest] + neighbourNode.weight
+          // console.log(candidate)
+          if (candidate < calcDist[neighbourNode.vertex]) {
+            calcDist[neighbourNode.vertex] = candidate
+            previous[neighbourNode.vertex] = smallest
+            priorityVertex.enqueue(neighbourNode.vertex, candidate)
+          }
+        }
+
+      }
     }
-  }
-     efficientPath.push(startV)
-     return efficientPath.reverse()
+    efficientPath.push(startV)
+    return efficientPath.reverse()
     // console.log(priorityVertex);
     // console.log(previous);
   }
@@ -111,6 +108,8 @@ g.addedge("D", "E", 1);
 g.addedge("C", "F", 2);
 g.addedge("F", "E", 3);
 g.addedge("G", "E", 5);
+
+console.log(g.DijkstraAlgo("A", "E"))
 
 // let q= new PriorityQueue()
 // q.enqueue("C",5)

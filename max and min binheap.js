@@ -10,7 +10,14 @@ class maxbinheap{
     {
       let currentindex = this.heap.length - 1 
       let parentindex = Math.floor(currentindex/2)
-      while(this.heap[currentindex] > this.heap[parentindex]){
+      /*
+      Here we are dividing the currentindex by 2 to get the parent index as the data are added to the array we can easily find the position of node's left node, right node and parent node
+      so to find the parent node index: currentindex/2
+      2. left child = currentindex * 2
+      3. right child = currentindex * 2 + 1
+      
+      */
+      while(this.heap[currentindex] < this.heap[parentindex]){
         // this while loop will goes on execute until the condition is false so to stop swaping and accessing it with null below if conditions is used
         if(currentindex >=0){ 
            [this.heap[currentindex],this.heap[parentindex]] = [this.heap[parentindex],this.heap[currentindex]]

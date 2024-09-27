@@ -6,7 +6,7 @@ class maxbinheap{
   insert(val)
   {
     this.heap.push(val)
-    if(this.heap.length >2) // when first element is inserted then this condition will not allow to execute the below code
+    if(this.heap.length >1) // when first element is inserted then this condition will not allow to execute the below code
     {
       let currentindex = this.heap.length - 1 
       let parentindex = Math.floor(currentindex/2)

@@ -53,18 +53,18 @@ const Improvisedhash = (key, maxarrlength) => {
   let total = 0;
   let prime_number = 19;
   for (let i = 0; i < Math.min(key.length, 10); i++) {
-    total = total * prime_number + key[i].charCodeAt(0);
+    total = total * prime_number + key[i].charCodeAt(0) -96 ;
   }
   return total % maxarrlength;
 };
 console.log(`Improvised hash function :${Improvisedhash("sagar", 30)}`);
 //  in this above function also there is a slight chance of collision.
-// To avoid collision there are so manyu ways some of the way
+// To avoid collision there are so many ways some of the way
 // 1. separate chaining -> consider 2 keys has been assigned same position, then at the same position it will create a nested array
 // 2. Linear probing: In this if the two or more key has been assigned same position then it will move the key to next position
 
 class hashtable {
-  constructor(size = 6) {
+  constructor(size = 10) {
     this.keymap = new Array(size); // creating a size of 29(note we are taking the size also a prime number)
   }
   hash(key) {
